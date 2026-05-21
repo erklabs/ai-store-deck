@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The AI Store — Innovation Lab</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #000000;
+    --purple: #9333ea;
+    --purple-light: #c084fc;
+    --blue: #3b82f6;
+    --blue-light: #93c5fd;
+    --pink: #ec4899;
+    --pink-light: #f9a8d4;
+    --white: #ffffff;
+    --white-dim: rgba(255,255,255,0.7);
+    --card-bg: rgba(255,255,255,0.04);
+    --card-border: rgba(255,255,255,0.08);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Outfit', sans-serif;
+    overflow-x: hidden;
+    cursor: none;
+  }
+
+  /* ─── CUSTOM CURSOR ─── */
+  .cursor {
+    position: fixed; width: 12px; height: 12px;
+    background: white; border-radius: 50%;
+    pointer-events: none; z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s, width 0.3s, height 0.3s, background 0.3s;
+    mix-blend-mode: difference;
+  }
+  .cursor-ring {
+    position: fixed; width: 40px; height: 40px;
+    border: 1px solid rgba(255,255,255,0.4); border-radius: 50%;
+    pointer-events: none; z-index: 9998;
+    transform: translate(-50%, -50%);
+    transition: transform 0.15s ease-out, width 0.3s, height 0.3s;
+  }
+
+  /* ─── NOISE OVERLAY ─── */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    opacity: 0.025; pointer-events: none; z-index: 1000;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 500;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 24px 60px;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, transparent 100%);
+    backdrop-filter: blur(0px);
+  }
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px; letter-spacing: 3px;
+    background: linear-gradient(135deg, var(--white), var(--purple-light));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .nav-links { display: flex; gap: 36px; }
+  .nav-links a {
+    color: rgba(255,255,255,0.55); text-decoration: none;
+    font-size: 13px; font-weight: 500; letter-spacing: 1.5px;
+    text-transform: uppercase;
+    transition: color 0.3s;
+  }
+  .nav-links a:hover { color: white; }
+  .nav-cta {
+    padding: 10px 24px; border-radius: 100px;
+    border: 1px solid rgba(255,255,255,0.2);
+    color: white; font-size: 13px; font-weight: 600;
+    letter-spacing: 1px; text-decoration: none;
+    background: rgba(255,255,255,0.05);
+    transition: all 0.3s; backdrop-filter: blur(10px);
+    text-transform: uppercase;
+  }
+  .nav-cta:hover { background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.4); }
+
+  /* ─── HERO ─── */
+  #hero {
+    position: relative; min-height: 100vh;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center; overflow: hidden;
+  }
+
+  .hero-glow-blue {
+    position: absolute; bottom: -100px; left: -10%;
+    width: 55vw; height: 55vw; border-radius: 50%;
+    background: radial-gradient(circle, rgba(59,130,246,0.25) 0%, transparent 65%);
+    filter: blur(40px); pointer-events: none;
+    animation: glow-pulse 6s ease-in-out infinite alternate;
+  }
+  .hero-glow-purple {
+    position: absolute; bottom: -100px; right: -10%;
+    width: 55vw; height: 55vw; border-radius: 50%;
+    background: radial-gradient(circle, rgba(168,85,247,0.3) 0%, transparent 65%);
+    filter: blur(40px); pointer-events: none;
+    animation: glow-pulse 6s ease-in-out infinite alternate-reverse;
+  }
+  .hero-glow-pink {
+    position: absolute; bottom: -50px; left: 50%; transform: translateX(-50%);
+    width: 30vw; height: 30vw; border-radius: 50%;
+    background: radial-gradient(circle, rgba(236,72,153,0.15) 0%, transparent 65%);
+    filter: blur(30px); pointer-events: none;
+  }
+
+  @keyframes glow-pulse {
+    from { opacity: 0.8; transform: scale(0.95); }
+    to   { opacity: 1.0; transform: scale(1.05); }
+  }
+
+  /* Fluid chrome orbs */
+  .orb {
+    position: absolute;
+    border-radius: 50%;
+    background: conic-gradient(from 0deg, #c084fc, #818cf8, #38bdf8, #34d399, #f472b6, #c084fc);
+    filter: blur(1px) saturate(1.4);
+    animation: float 8s ease-in-out infinite;
+    opacity: 0.85;
+  }
+  .orb::after {
+    content: '';
+    position: absolute; inset: 4px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.6), rgba(0,0,0,0.3));
+  }
+  .orb-tl { top: 8%; left: 3%; width: 140px; height: 140px; animation-delay: 0s; }
+  .orb-tr { top: 5%; right: 3%; width: 160px; height: 160px; animation-delay: -3s; }
+
+  @keyframes float {
+    0%,100% { transform: translateY(0px) rotate(0deg); }
+    33%      { transform: translateY(-20px) rotate(8deg); }
+    66%      { transform: translateY(10px) rotate(-6deg); }
+  }
+
+  /* Platform visual */
+  .hero-platform {
+    position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+    width: 560px; height: 100px;
+    background: linear-gradient(to top, rgba(140,100,220,0.2), transparent);
+    border-top: 1px solid rgba(200,180,255,0.12);
+  }
+
+  .hero-label {
+    font-size: 12px; font-weight: 600; letter-spacing: 4px;
+    color: rgba(255,255,255,0.45); text-transform: uppercase;
+    margin-bottom: 24px;
+    border: 1px solid rgba(255,255,255,0.12);
+    padding: 8px 20px; border-radius: 100px;
+    background: rgba(255,255,255,0.04);
+    backdrop-filter: blur(10px);
+    animation: fade-up 0.8s ease both;
+  }
+  .hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(80px, 12vw, 160px);
+    line-height: 0.92; letter-spacing: -1px;
+    background: linear-gradient(170deg, #ffffff 0%, #e8d5ff 50%, #c084fc 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    animation: fade-up 0.8s 0.15s ease both;
+    position: relative; z-index: 2;
+  }
+  .hero-sub {
+    font-size: clamp(11px, 1.5vw, 14px); letter-spacing: 8px;
+    color: rgba(255,255,255,0.5); text-transform: uppercase;
+    margin-top: 20px; margin-bottom: 52px;
+    animation: fade-up 0.8s 0.3s ease both;
+  }
+  .hero-buttons {
+    display: flex; gap: 16px; justify-content: center;
+    animation: fade-up 0.8s 0.45s ease both;
+    position: relative; z-index: 2;
+  }
+  .btn-primary {
+    padding: 16px 40px; border-radius: 100px;
+    background: linear-gradient(135deg, #9333ea, #ec4899);
+    color: white; font-weight: 700; font-size: 14px;
+    letter-spacing: 1px; text-decoration: none; text-transform: uppercase;
+    border: none; cursor: none;
+    box-shadow: 0 0 40px rgba(147,51,234,0.45), 0 0 80px rgba(236,72,153,0.2);
+    transition: all 0.3s;
+  }
+  .btn-primary:hover {
+    box-shadow: 0 0 60px rgba(147,51,234,0.7), 0 0 100px rgba(236,72,153,0.35);
+    transform: translateY(-2px);
+  }
+  .btn-ghost {
+    padding: 16px 40px; border-radius: 100px;
+    background: transparent; color: white;
+    font-weight: 600; font-size: 14px;
+    letter-spacing: 1px; text-decoration: none; text-transform: uppercase;
+    border: 1px solid rgba(255,255,255,0.2); cursor: none;
+    transition: all 0.3s;
+  }
+  .btn-ghost:hover { border-color: rgba(255,255,255,0.5); background: rgba(255,255,255,0.05); }
+
+  .scroll-hint {
+    position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    color: rgba(255,255,255,0.25); font-size: 11px; letter-spacing: 2px;
+    text-transform: uppercase; animation: fade-up 1s 0.9s ease both;
+  }
+  .scroll-line {
+    width: 1px; height: 50px;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.3), transparent);
+    animation: scroll-drip 2s ease-in-out infinite;
+  }
+  @keyframes scroll-drip {
+    0%   { transform: scaleY(0); transform-origin: top; }
+    50%  { transform: scaleY(1); transform-origin: top; }
+    50.1%{ transform: scaleY(1); transform-origin: bottom; }
+    100% { transform: scaleY(0); transform-origin: bottom; }
+  }
+
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ─── SECTION SHARED ─── */
+  section {
+    position: relative; padding: 120px 60px;
+    max-width: 1300px; margin: 0 auto;
+  }
+  .section-tag {
+    font-size: 11px; font-weight: 700; letter-spacing: 4px;
+    text-transform: uppercase; color: var(--purple-light);
+    margin-bottom: 20px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .section-tag::before {
+    content: ''; display: block; width: 30px; height: 1px;
+    background: var(--purple-light);
+  }
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(48px, 6vw, 80px);
+    line-height: 1; letter-spacing: 1px;
+  }
+  .section-title em {
+    font-style: normal;
+    background: linear-gradient(135deg, var(--purple-light), var(--pink-light));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+
+  /* ─── PROBLEM / SOLUTION ─── */
+  #problem-solution {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 3px;
+  }
+  .ps-panel {
+    padding: 70px 60px; position: relative; overflow: hidden;
+  }
+  .ps-wall {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-right: none;
+  }
+  .ps-bridge {
+    background: linear-gradient(135deg, rgba(147,51,234,0.08), rgba(236,72,153,0.05));
+    border: 1px solid rgba(147,51,234,0.2);
+  }
+  .ps-bridge::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(circle at 80% 20%, rgba(147,51,234,0.1), transparent 60%);
+  }
+  .ps-icon { font-size: 40px; margin-bottom: 24px; }
+  .ps-heading {
+    font-family: 'Bebas Neue', sans-serif; font-size: 42px;
+    letter-spacing: 2px; margin-bottom: 16px;
+  }
+  .ps-desc { color: rgba(255,255,255,0.55); font-size: 16px; line-height: 1.7; margin-bottom: 32px; }
+  .ps-list { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+  .ps-list li {
+    display: flex; align-items: flex-start; gap: 14px;
+    font-size: 14px; color: rgba(255,255,255,0.65); line-height: 1.5;
+  }
+  .ps-list li .icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+  .ps-verdict {
+    margin-top: 40px; padding: 16px 24px;
+    border-radius: 12px; font-weight: 700; font-size: 14px; letter-spacing: 0.5px;
+  }
+  .ps-verdict.bad  { background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.2); color: #fca5a5; }
+  .ps-verdict.good { background: rgba(34,197,94,0.08); border: 1px solid rgba(34,197,94,0.2); color: #86efac; }
+
+  /* ─── AGENTS ─── */
+  #agents { padding-top: 60px; }
+  .agents-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
+    margin-top: 70px;
+  }
+  .agent-card {
+    position: relative; padding: 50px 40px;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    transition: all 0.4s; overflow: hidden;
+  }
+  .agent-card::before {
+    content: ''; position: absolute; inset: 0; opacity: 0;
+    background: radial-gradient(circle at 50% 0%, rgba(147,51,234,0.15), transparent 70%);
+    transition: opacity 0.4s;
+  }
+  .agent-card:hover { border-color: rgba(147,51,234,0.4); transform: translateY(-4px); }
+  .agent-card:hover::before { opacity: 1; }
+  .agent-badge {
+    position: absolute; top: 20px; right: 20px;
+    padding: 4px 12px; border-radius: 100px;
+    background: linear-gradient(135deg, #9333ea, #ec4899);
+    font-size: 10px; font-weight: 700; letter-spacing: 1.5px;
+    text-transform: uppercase; opacity: 0;
+  }
+  .agent-card.popular .agent-badge { opacity: 1; }
+  .agent-icon { font-size: 44px; margin-bottom: 20px; }
+  .agent-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 32px; letter-spacing: 2px; margin-bottom: 12px;
+  }
+  .agent-desc { font-size: 14px; color: rgba(255,255,255,0.5); line-height: 1.7; margin-bottom: 28px; }
+  .agent-features { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .agent-features li {
+    font-size: 13px; color: rgba(255,255,255,0.65);
+    display: flex; align-items: center; gap: 10px;
+  }
+  .agent-features li::before {
+    content: '✓'; color: var(--purple-light); font-weight: 700; font-size: 12px;
+  }
+
+  /* ─── STATS DIVIDER ─── */
+  #stats-bar {
+    padding: 60px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    background: rgba(255,255,255,0.015);
+  }
+  .stats-inner {
+    max-width: 1300px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(4,1fr);
+    gap: 40px; text-align: center;
+  }
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif; font-size: 56px;
+    line-height: 1;
+    background: linear-gradient(135deg, white, var(--purple-light));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .stat-label { font-size: 12px; letter-spacing: 2px; color: rgba(255,255,255,0.4); text-transform: uppercase; margin-top: 8px; }
+
+  /* ─── MARKET ─── */
+  #market .market-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
+    margin-top: 70px; align-items: center;
+  }
+  .market-bars { display: flex; flex-direction: column; gap: 16px; }
+  .mbar-row { display: flex; align-items: center; gap: 16px; }
+  .mbar-year { font-size: 13px; color: rgba(255,255,255,0.4); width: 40px; flex-shrink: 0; }
+  .mbar-track {
+    flex: 1; height: 36px; background: rgba(255,255,255,0.04);
+    border-radius: 4px; overflow: hidden; border: 1px solid rgba(255,255,255,0.06);
+  }
+  .mbar-fill {
+    height: 100%; border-radius: 4px;
+    background: linear-gradient(90deg, rgba(147,51,234,0.6), rgba(236,72,153,0.6));
+    display: flex; align-items: center; justify-content: flex-end;
+    padding-right: 12px; font-size: 13px; font-weight: 700;
+    white-space: nowrap;
+    transition: width 1.5s cubic-bezier(0.4,0,0.2,1);
+  }
+  .mbar-final {
+    background: linear-gradient(90deg, #9333ea, #ec4899) !important;
+    box-shadow: 0 0 20px rgba(147,51,234,0.5);
+  }
+  .market-text .kpi-tag {
+    font-family: 'Bebas Neue', sans-serif; font-size: 72px;
+    background: linear-gradient(135deg, var(--purple-light), var(--pink-light));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    line-height: 1;
+  }
+  .market-text p { color: rgba(255,255,255,0.55); font-size: 16px; line-height: 1.7; margin-top: 20px; }
+
+  /* ─── PRICING ─── */
+  #pricing .pricing-grid {
+    display: grid; grid-template-columns: repeat(3,1fr); gap: 2px;
+    margin-top: 70px;
+  }
+  .pricing-card {
+    padding: 50px 36px; position: relative;
+    background: var(--card-bg); border: 1px solid var(--card-border);
+    transition: all 0.4s;
+  }
+  .pricing-card.featured {
+    background: linear-gradient(160deg, rgba(147,51,234,0.12), rgba(236,72,153,0.06));
+    border-color: rgba(147,51,234,0.35);
+    box-shadow: 0 0 60px rgba(147,51,234,0.1);
+  }
+  .pricing-tier { font-size: 11px; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 20px; }
+  .pricing-price {
+    font-family: 'Bebas Neue', sans-serif; font-size: 64px; line-height: 1;
+    background: linear-gradient(135deg, white, var(--purple-light));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .pricing-price span { font-size: 20px; }
+  .pricing-desc { color: rgba(255,255,255,0.45); font-size: 14px; line-height: 1.6; margin: 20px 0 32px; }
+  .pricing-features { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .pricing-features li { font-size: 13px; color: rgba(255,255,255,0.6); display: flex; gap: 10px; }
+  .pricing-features li::before { content: '→'; color: var(--purple-light); }
+
+  /* ─── CTA ─── */
+  #cta {
+    position: relative; padding: 160px 60px;
+    text-align: center; overflow: hidden;
+  }
+  .cta-glow {
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 100%, rgba(147,51,234,0.2), transparent);
+  }
+  .cta-grid-lines {
+    position: absolute; inset: 0; opacity: 0.06;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px);
+    background-size: 60px 60px;
+    -webkit-mask-image: radial-gradient(ellipse 70% 80% at 50% 100%, black, transparent);
+  }
+  .cta-inner { position: relative; z-index: 2; max-width: 700px; margin: 0 auto; }
+  .cta-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(56px, 7vw, 96px); line-height: 0.95;
+    margin-bottom: 28px;
+  }
+  .cta-desc { font-size: 17px; color: rgba(255,255,255,0.55); line-height: 1.7; margin-bottom: 48px; }
+  .cta-milestones {
+    display: flex; flex-direction: column; gap: 10px;
+    text-align: left; max-width: 340px; margin: 40px auto 0;
+  }
+  .milestone {
+    font-size: 13px; color: rgba(255,255,255,0.5);
+    display: flex; align-items: center; gap: 12px;
+  }
+  .milestone::before {
+    content: '✓'; color: var(--purple-light); font-weight: 700;
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    padding: 40px 60px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    display: flex; align-items: center; justify-content: space-between;
+    max-width: 1300px; margin: 0 auto;
+  }
+  .footer-logo {
+    font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 3px;
+    background: linear-gradient(135deg, white, var(--purple-light));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .footer-links { display: flex; gap: 28px; }
+  .footer-links a { color: rgba(255,255,255,0.35); font-size: 13px; text-decoration: none; transition: color 0.3s; }
+  .footer-links a:hover { color: white; }
+
+  /* ─── DIVIDER LINES ─── */
+  .h-divider {
+    width: 100%; height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
+  }
+
+  /* ─── ANIMATION ON SCROLL ─── */
+  .reveal {
+    opacity: 0; transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .reveal.visible { opacity: 1; transform: none; }
+
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- ─── NAV ─── -->
+<nav>
+  <div class="nav-logo">The AI Store</div>
+  <div class="nav-links">
+    <a href="#agents">Agents</a>
+    <a href="#market">Market</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#cta">Beta</a>
+  </div>
+  <a href="#cta" class="nav-cta">Join Beta</a>
+</nav>
+
+<!-- ─── HERO ─── -->
+<div id="hero">
+  <div class="hero-glow-blue"></div>
+  <div class="hero-glow-purple"></div>
+  <div class="hero-glow-pink"></div>
+  <div class="orb orb-tl"></div>
+  <div class="orb orb-tr"></div>
+  <div class="hero-platform"></div>
+  <div class="hero-label">Innovation Lab · March 2026</div>
+  <h1 class="hero-title">The AI Store</h1>
+  <p class="hero-sub">Autonomous AI · For Everyone</p>
+  <div class="hero-buttons">
+    <a href="#agents" class="btn-primary">Explore Agents</a>
+    <a href="#cta" class="btn-ghost">Join Seed Round</a>
+  </div>
+  <div class="scroll-hint">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</div>
+
+<div class="h-divider"></div>
+
+<!-- ─── PROBLEM / SOLUTION ─── -->
+<div id="problem-solution">
+  <div class="ps-panel ps-wall reveal">
+    <div class="ps-icon">🧱</div>
+    <div class="ps-heading">The Wall</div>
+    <p class="ps-desc">Current AI agent systems are built by engineers for engineers, creating massive consumer friction.</p>
+    <ul class="ps-list">
+      <li><span class="icon">💻</span><span><strong>Coding Complexity</strong> — Users locked out by complex Python environments and dependency errors.</span></li>
+      <li><span class="icon">📟</span><span><strong>Terminal Interfaces</strong> — Intimidating text terminals hostile to 99% of everyday internet users.</span></li>
+      <li><span class="icon">📖</span><span><strong>Frustrating UX</strong> — Configuration relies on fragile and outdated developer documentation.</span></li>
+    </ul>
+    <div class="ps-verdict bad">❌ 99% of everyday internet users are locked out of AI utility</div>
+  </div>
+  <div class="ps-panel ps-bridge reveal" style="transition-delay:0.15s">
+    <div class="ps-icon">🌉</div>
+    <div class="ps-heading">The Bridge</div>
+    <p class="ps-desc">The AI Store simplifies agent distribution, making autonomous execution immediately accessible.</p>
+    <ul class="ps-list">
+      <li><span class="icon">📱</span><span><strong>1-Click Marketplace</strong> — Explore and run sophisticated agents in one click, just like an app store.</span></li>
+      <li><span class="icon">☁️</span><span><strong>Zero-Setup Cloud</strong> — Web automation and LLMs run securely in ephemeral cloud sandboxes.</span></li>
+      <li><span class="icon">🖥️</span><span><strong>Intuitive Dashboards</strong> — Familiar control panels and step checklists guide the user experience.</span></li>
+    </ul>
+    <div class="ps-verdict good">✅ Secure, friction-free autonomous AI utility for everyone</div>
+  </div>
+</div>
+
+<div class="h-divider"></div>
+
+<!-- ─── STATS BAR ─── -->
+<div id="stats-bar">
+  <div class="stats-inner">
+    <div class="reveal">
+      <div class="stat-num">$52.6B</div>
+      <div class="stat-label">Market by 2030</div>
+    </div>
+    <div class="reveal" style="transition-delay:0.1s">
+      <div class="stat-num">46.3%</div>
+      <div class="stat-label">CAGR Growth</div>
+    </div>
+    <div class="reveal" style="transition-delay:0.2s">
+      <div class="stat-num">99%</div>
+      <div class="stat-label">Currently Locked Out</div>
+    </div>
+    <div class="reveal" style="transition-delay:0.3s">
+      <div class="stat-num">3</div>
+      <div class="stat-label">Launch Agents Day-One</div>
+    </div>
+  </div>
+</div>
+
+<div class="h-divider"></div>
+
+<!-- ─── AGENTS ─── -->
+<section id="agents">
+  <div class="section-tag reveal">Our Solution</div>
+  <h2 class="section-title reveal" style="transition-delay:0.1s">In-House <em>Hero Agents</em></h2>
+  <div class="agents-grid">
+    <div class="agent-card reveal" style="transition-delay:0.1s">
+      <div class="agent-icon">✈️</div>
+      <div class="agent-name">Travel Planner</div>
+      <p class="agent-desc">Searches flight and hotel listings concurrently to build optimized travel itineraries tailored to your budget and dates.</p>
+      <ul class="agent-features">
+        <li>Real-time Booking</li>
+        <li>Budget Optimization</li>
+        <li>Itinerary Management</li>
+      </ul>
+    </div>
+    <div class="agent-card popular reveal" style="transition-delay:0.2s">
+      <div class="agent-badge">Popular</div>
+      <div class="agent-icon">🍔</div>
+      <div class="agent-name">Food Optimizer</div>
+      <p class="agent-desc">Compares top food delivery apps concurrently to build the cheapest checkout cart, saving up to 35%.</p>
+      <ul class="agent-features">
+        <li>Price Comparison</li>
+        <li>Multi-Platform</li>
+        <li>Real-time Updates</li>
+      </ul>
+    </div>
+    <div class="agent-card reveal" style="transition-delay:0.3s">
+      <div class="agent-icon">📊</div>
+      <div class="agent-name">Finance Analyzer</div>
+      <p class="agent-desc">Securely syncs bank feeds via Plaid. Categorizes spending and requests subscription cancellations on your behalf.</p>
+      <ul class="agent-features">
+        <li>Secure Connection</li>
+        <li>Smart Categorization</li>
+        <li>Auto-Cancellation</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="h-divider"></div>
+
+<!-- ─── MARKET ─── -->
+<section id="market">
+  <div class="section-tag reveal">Market Opportunity</div>
+  <h2 class="section-title reveal" style="transition-delay:0.1s">The <em>$52.6B</em> Opportunity</h2>
+  <div class="market-grid">
+    <div class="market-bars reveal" style="transition-delay:0.15s">
+      <div class="mbar-row"><span class="mbar-year">2025</span><div class="mbar-track"><div class="mbar-fill" style="width:14.8%">$7.8B</div></div></div>
+      <div class="mbar-row"><span class="mbar-year">2026</span><div class="mbar-track"><div class="mbar-fill" style="width:21.8%">$11.5B</div></div></div>
+      <div class="mbar-row"><span class="mbar-year">2027</span><div class="mbar-track"><div class="mbar-fill" style="width:31.9%">$16.8B</div></div></div>
+      <div class="mbar-row"><span class="mbar-year">2028</span><div class="mbar-track"><div class="mbar-fill" style="width:46.7%">$24.6B</div></div></div>
+      <div class="mbar-row"><span class="mbar-year">2029</span><div class="mbar-track"><div class="mbar-fill" style="width:68.4%">$36.0B</div></div></div>
+      <div class="mbar-row"><span class="mbar-year">2030</span><div class="mbar-track"><div class="mbar-fill mbar-final" style="width:100%">$52.6B</div></div></div>
+    </div>
+    <div class="market-text reveal" style="transition-delay:0.3s">
+      <div class="kpi-tag">46.3% CAGR</div>
+      <p>Consumer AI agents are expanding from niche developer tools into a high-margin mass utility — propelled by breakthroughs in multi-modal LLMs, reliable browser automation, and a paradigm shift toward proactive action engines.</p>
+      <p style="margin-top:16px">The AI Store is positioned at the centre of this wave — the only marketplace making this power accessible to everyone.</p>
+    </div>
+  </div>
+</section>
+
+<div class="h-divider"></div>
+
+<!-- ─── PRICING ─── -->
+<section id="pricing">
+  <div class="section-tag reveal">Business Model</div>
+  <h2 class="section-title reveal" style="transition-delay:0.1s">Revenue <em>Flows</em></h2>
+  <div class="pricing-grid">
+    <div class="pricing-card reveal" style="transition-delay:0.1s">
+      <div class="pricing-tier">Freemium Compute</div>
+      <div class="pricing-price">Free<span> / forever</span></div>
+      <p class="pricing-desc">Core agent tasks are free. Power users upgrade for priority queue allocation and multi-threaded execution.</p>
+      <ul class="pricing-features">
+        <li>All 3 Hero Agents</li>
+        <li>Standard queue priority</li>
+        <li>1 concurrent task</li>
+      </ul>
+    </div>
+    <div class="pricing-card featured reveal" style="transition-delay:0.2s">
+      <div class="pricing-tier">Power User</div>
+      <div class="pricing-price"><span>€</span>5<span> /mo</span></div>
+      <p class="pricing-desc">Priority queue allocation, multi-threaded agent execution, and early access to new agents.</p>
+      <ul class="pricing-features">
+        <li>Priority execution queue</li>
+        <li>Multi-threaded tasks</li>
+        <li>Early agent access</li>
+        <li>70% gross margin</li>
+      </ul>
+    </div>
+    <div class="pricing-card reveal" style="transition-delay:0.3s">
+      <div class="pricing-tier">Enterprise SaaS</div>
+      <div class="pricing-price"><span>€</span>20–50<span> /seat</span></div>
+      <p class="pricing-desc">Team workspaces, SSO integration, custom audit profiles, and private tenant cloud tunnels.</p>
+      <ul class="pricing-features">
+        <li>Team workspaces & SSO</li>
+        <li>Custom audit trails</li>
+        <li>Private cloud tenant</li>
+        <li>15% ecosystem take-rate</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="h-divider"></div>
+
+<!-- ─── CTA ─── -->
+<div id="cta">
+  <div class="cta-glow"></div>
+  <div class="cta-grid-lines"></div>
+  <div class="cta-inner reveal">
+    <h2 class="cta-title">Join The<br><em style="background:linear-gradient(135deg,#c084fc,#f472b6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-style:normal">Future</em></h2>
+    <p class="cta-desc">Participate in our upcoming seed round or apply to join our exclusive developer closed-beta program. Let's make autonomous execution accessible for everyone.</p>
+    <div class="hero-buttons" style="justify-content:center">
+      <a href="mailto:hello@theaistore.io" class="btn-primary">Apply for Beta</a>
+      <a href="mailto:hello@theaistore.io" class="btn-ghost">Seed Round Inquiry</a>
+    </div>
+    <div class="cta-milestones">
+      <div class="milestone">Q3 2026 — Public Beta Launch</div>
+      <div class="milestone">Q4 2026 — Developer SDK Release</div>
+      <div class="milestone">Q1 2027 — Enterprise Tier Launch</div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── FOOTER ─── -->
+<div class="h-divider"></div>
+<footer>
+  <div class="footer-logo">The AI Store 🛒</div>
+  <div class="footer-links">
+    <a href="mailto:hello@theaistore.io">hello@theaistore.io</a>
+    <a href="http://dev.theaistore.io">dev.theaistore.io</a>
+    <a href="http://www.theaistore.io">www.theaistore.io</a>
+  </div>
+</footer>
+
+<script>
+  // Cursor
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursorRing');
+  let mx=0,my=0,rx=0,ry=0;
+  document.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; cursor.style.left=mx+'px'; cursor.style.top=my+'px'; });
+  (function animRing(){
+    rx+=(mx-rx)*0.12; ry+=(my-ry)*0.12;
+    ring.style.left=rx+'px'; ring.style.top=ry+'px';
+    requestAnimationFrame(animRing);
+  })();
+  document.querySelectorAll('a,button').forEach(el=>{
+    el.addEventListener('mouseenter',()=>{ cursor.style.width='20px'; cursor.style.height='20px'; ring.style.width='60px'; ring.style.height='60px'; });
+    el.addEventListener('mouseleave',()=>{ cursor.style.width='12px'; cursor.style.height='12px'; ring.style.width='40px'; ring.style.height='40px'; });
+  });
+
+  // Reveal on scroll
+  const observer = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+</script>
+</body>
+</html>

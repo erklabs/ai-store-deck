@@ -17,6 +17,8 @@
       --pink: #ec4899;
       --pink-light: #f9a8d4;
       --white: #ffffff;
+      --card-bg: rgba(20, 10, 32, 0.85);
+      --card-border: rgba(168, 85, 247, 0.25);
     }
     * {
       box-sizing: border-box;
@@ -143,7 +145,11 @@
     // 1. Mount Slides Shadow DOM roots
     
         const root1 = document.getElementById('slide-wrapper-1').attachShadow({mode: 'open'});
-        root1.innerHTML = `<style>* {
+        root1.innerHTML = `<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Outfit:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+
+<style>* {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
@@ -410,8 +416,13 @@
   
   
   
+  
+  
+  
+  
+  
   /* ─── REMIX STYLING INJECTION ─── */
-  :root {
+  :root, :host {
     --black: #000000;
     --purple: #9333ea;
     --purple-light: #c084fc;
@@ -421,8 +432,8 @@
     --pink-light: #f9a8d4;
     --white: #ffffff;
     --white-dim: rgba(255,255,255,0.7);
-    --card-bg: rgba(255,255,255,0.04);
-    --card-border: rgba(255,255,255,0.08);
+    --card-bg: rgba(20, 10, 32, 0.85);
+    --card-border: rgba(168, 85, 247, 0.25);
   }
 
   body {
@@ -575,9 +586,9 @@
   }
 
   /* rounded glassmorphism cards */
-  .side-card, .agent-card, .trait-card, .pricing-card, .info-card, .audience-card, .metric-card, .compliance-card, .growth-card, .tactic-card, .team-card, .cta-card {
-    background: var(--card-bg) !important;
-    border: 1px solid var(--card-border) !important;
+  :where(.side-card, .agent-card, .trait-card, .pricing-card, .info-card, .audience-card, .metric-card, .compliance-card, .growth-card, .tactic-card, .team-card, .cta-card, .tech-card, .highlight-card, .economics-card) {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
     border-radius: 16px !important;
     backdrop-filter: blur(10px) !important;
     -webkit-backdrop-filter: blur(10px) !important;
@@ -585,7 +596,7 @@
     box-shadow: 0 10px 30px rgba(0,0,0,0.15) !important;
   }
   
-  .side-card:hover, .agent-card:hover, .trait-card:hover, .pricing-card:hover, .info-card:hover, .team-card:hover, .cta-card:hover {
+  .side-card:hover, .agent-card:hover, .trait-card:hover, .pricing-card:hover, .info-card:hover, .team-card:hover, .cta-card:hover, .tech-card:hover, .highlight-card:hover, .economics-card:hover {
     border-color: rgba(147, 51, 234, 0.4) !important;
     transform: translateY(-4px) !important;
     box-shadow: 0 15px 35px rgba(147, 51, 234, 0.18), 0 0 20px rgba(147, 51, 234, 0.05) !important;
@@ -698,7 +709,11 @@
         
 
         const root2 = document.getElementById('slide-wrapper-2').attachShadow({mode: 'open'});
-        root2.innerHTML = `<style>* {
+        root2.innerHTML = `<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Outfit:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+
+<style>* {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
@@ -1031,8 +1046,13 @@
   
   
   
+  
+  
+  
+  
+  
   /* ─── REMIX STYLING INJECTION ─── */
-  :root {
+  :root, :host {
     --black: #000000;
     --purple: #9333ea;
     --purple-light: #c084fc;
@@ -1042,8 +1062,8 @@
     --pink-light: #f9a8d4;
     --white: #ffffff;
     --white-dim: rgba(255,255,255,0.7);
-    --card-bg: rgba(255,255,255,0.04);
-    --card-border: rgba(255,255,255,0.08);
+    --card-bg: rgba(20, 10, 32, 0.85);
+    --card-border: rgba(168, 85, 247, 0.25);
   }
 
   body {
@@ -1196,9 +1216,9 @@
   }
 
   /* rounded glassmorphism cards */
-  .side-card, .agent-card, .trait-card, .pricing-card, .info-card, .audience-card, .metric-card, .compliance-card, .growth-card, .tactic-card, .team-card, .cta-card {
-    background: var(--card-bg) !important;
-    border: 1px solid var(--card-border) !important;
+  :where(.side-card, .agent-card, .trait-card, .pricing-card, .info-card, .audience-card, .metric-card, .compliance-card, .growth-card, .tactic-card, .team-card, .cta-card, .tech-card, .highlight-card, .economics-card) {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
     border-radius: 16px !important;
     backdrop-filter: blur(10px) !important;
     -webkit-backdrop-filter: blur(10px) !important;
@@ -1206,7 +1226,7 @@
     box-shadow: 0 10px 30px rgba(0,0,0,0.15) !important;
   }
   
-  .side-card:hover, .agent-card:hover, .trait-card:hover, .pricing-card:hover, .info-card:hover, .team-card:hover, .cta-card:hover {
+  .side-card:hover, .agent-card:hover, .trait-card:hover, .pricing-card:hover, .info-card:hover, .team-card:hover, .cta-card:hover, .tech-card:hover, .highlight-card:hover, .economics-card:hover {
     border-color: rgba(147, 51, 234, 0.4) !important;
     transform: translateY(-4px) !important;
     box-shadow: 0 15px 35px rgba(147, 51, 234, 0.18), 0 0 20px rgba(147, 51, 234, 0.05) !important;
@@ -1299,7 +1319,7 @@
 <h2>The Journey: <span class="gradient-text">60-Second Experience</span></h2>
 </div>
 <div class="video-container" style="flex: 1; margin-top: 10px; display: flex; justify-content: center; align-items: center; border-radius: 12px; overflow: hidden; border: 1px solid rgba(168, 85, 247, 0.3); box-shadow: 0 10px 40px rgba(0,0,0,0.5); background: #000;">
-<video autoplay="" controls="" muted="" src="video.mp4" style="width: 100%; height: 100%; object-fit: contain;"></video>
+<video controls="" muted="" src="video.mp4" style="width: 100%; height: 100%; object-fit: contain;"></video>
 </div>
 </div>
 <!-- Premium Interactive Navigation Overlay -->
@@ -1405,7 +1425,11 @@
         
 
         const root3 = document.getElementById('slide-wrapper-3').attachShadow({mode: 'open'});
-        root3.innerHTML = `<style>* {
+        root3.innerHTML = `<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Outfit:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+
+<style>* {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
@@ -1738,8 +1762,13 @@
   
   
   
+  
+  
+  
+  
+  
   /* ─── REMIX STYLING INJECTION ─── */
-  :root {
+  :root, :host {
     --black: #000000;
     --purple: #9333ea;
     --purple-light: #c084fc;
@@ -1749,8 +1778,8 @@
     --pink-light: #f9a8d4;
     --white: #ffffff;
     --white-dim: rgba(255,255,255,0.7);
-    --card-bg: rgba(255,255,255,0.04);
-    --card-border: rgba(255,255,255,0.08);
+    --card-bg: rgba(20, 10, 32, 0.85);
+    --card-border: rgba(168, 85, 247, 0.25);
   }
 
   body {
@@ -1903,9 +1932,9 @@
   }
 
   /* rounded glassmorphism cards */
-  .side-card, .agent-card, .trait-card, .pricing-card, .info-card, .audience-card, .metric-card, .compliance-card, .growth-card, .tactic-card, .team-card, .cta-card {
-    background: var(--card-bg) !important;
-    border: 1px solid var(--card-border) !important;
+  :where(.side-card, .agent-card, .trait-card, .pricing-card, .info-card, .audience-card, .metric-card, .compliance-card, .growth-card, .tactic-card, .team-card, .cta-card, .tech-card, .highlight-card, .economics-card) {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
     border-radius: 16px !important;
     backdrop-filter: blur(10px) !important;
     -webkit-backdrop-filter: blur(10px) !important;
@@ -1913,7 +1942,7 @@
     box-shadow: 0 10px 30px rgba(0,0,0,0.15) !important;
   }
   
-  .side-card:hover, .agent-card:hover, .trait-card:hover, .pricing-card:hover, .info-card:hover, .team-card:hover, .cta-card:hover {
+  .side-card:hover, .agent-card:hover, .trait-card:hover, .pricing-card:hover, .info-card:hover, .team-card:hover, .cta-card:hover, .tech-card:hover, .highlight-card:hover, .economics-card:hover {
     border-color: rgba(147, 51, 234, 0.4) !important;
     transform: translateY(-4px) !important;
     box-shadow: 0 15px 35px rgba(147, 51, 234, 0.18), 0 0 20px rgba(147, 51, 234, 0.05) !important;
@@ -2059,7 +2088,11 @@
         
 
         const root4 = document.getElementById('slide-wrapper-4').attachShadow({mode: 'open'});
-        root4.innerHTML = `<style>* {
+        root4.innerHTML = `<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Outfit:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+
+<style>* {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
@@ -2416,8 +2449,13 @@
   
   
   
+  
+  
+  
+  
+  
   /* ─── REMIX STYLING INJECTION ─── */
-  :root {
+  :root, :host {
     --black: #000000;
     --purple: #9333ea;
     --purple-light: #c084fc;
@@ -2427,8 +2465,8 @@
     --pink-light: #f9a8d4;
     --white: #ffffff;
     --white-dim: rgba(255,255,255,0.7);
-    --card-bg: rgba(255,255,255,0.04);
-    --card-border: rgba(255,255,255,0.08);
+    --card-bg: rgba(20, 10, 32, 0.85);
+    --card-border: rgba(168, 85, 247, 0.25);
   }
 
   body {
@@ -2581,9 +2619,9 @@
   }
 
   /* rounded glassmorphism cards */
-  .side-card, .agent-card, .trait-card, .pricing-card, .info-card, .audience-card, .metric-card, .compliance-card, .growth-card, .tactic-card, .team-card, .cta-card {
-    background: var(--card-bg) !important;
-    border: 1px solid var(--card-border) !important;
+  :where(.side-card, .agent-card, .trait-card, .pricing-card, .info-card, .audience-card, .metric-card, .compliance-card, .growth-card, .tactic-card, .team-card, .cta-card, .tech-card, .highlight-card, .economics-card) {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
     border-radius: 16px !important;
     backdrop-filter: blur(10px) !important;
     -webkit-backdrop-filter: blur(10px) !important;
@@ -2591,7 +2629,7 @@
     box-shadow: 0 10px 30px rgba(0,0,0,0.15) !important;
   }
   
-  .side-card:hover, .agent-card:hover, .trait-card:hover, .pricing-card:hover, .info-card:hover, .team-card:hover, .cta-card:hover {
+  .side-card:hover, .agent-card:hover, .trait-card:hover, .pricing-card:hover, .info-card:hover, .team-card:hover, .cta-card:hover, .tech-card:hover, .highlight-card:hover, .economics-card:hover {
     border-color: rgba(147, 51, 234, 0.4) !important;
     transform: translateY(-4px) !important;
     box-shadow: 0 15px 35px rgba(147, 51, 234, 0.18), 0 0 20px rgba(147, 51, 234, 0.05) !important;
@@ -2728,7 +2766,11 @@
         
 
         const root5 = document.getElementById('slide-wrapper-5').attachShadow({mode: 'open'});
-        root5.innerHTML = `<style>* {
+        root5.innerHTML = `<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Outfit:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+
+<style>* {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
@@ -3026,8 +3068,13 @@
   
   
   
+  
+  
+  
+  
+  
   /* ─── REMIX STYLING INJECTION ─── */
-  :root {
+  :root, :host {
     --black: #000000;
     --purple: #9333ea;
     --purple-light: #c084fc;
@@ -3037,8 +3084,8 @@
     --pink-light: #f9a8d4;
     --white: #ffffff;
     --white-dim: rgba(255,255,255,0.7);
-    --card-bg: rgba(255,255,255,0.04);
-    --card-border: rgba(255,255,255,0.08);
+    --card-bg: rgba(20, 10, 32, 0.85);
+    --card-border: rgba(168, 85, 247, 0.25);
   }
 
   body {
@@ -3191,9 +3238,9 @@
   }
 
   /* rounded glassmorphism cards */
-  .side-card, .agent-card, .trait-card, .pricing-card, .info-card, .audience-card, .metric-card, .compliance-card, .growth-card, .tactic-card, .team-card, .cta-card {
-    background: var(--card-bg) !important;
-    border: 1px solid var(--card-border) !important;
+  :where(.side-card, .agent-card, .trait-card, .pricing-card, .info-card, .audience-card, .metric-card, .compliance-card, .growth-card, .tactic-card, .team-card, .cta-card, .tech-card, .highlight-card, .economics-card) {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
     border-radius: 16px !important;
     backdrop-filter: blur(10px) !important;
     -webkit-backdrop-filter: blur(10px) !important;
@@ -3201,7 +3248,7 @@
     box-shadow: 0 10px 30px rgba(0,0,0,0.15) !important;
   }
   
-  .side-card:hover, .agent-card:hover, .trait-card:hover, .pricing-card:hover, .info-card:hover, .team-card:hover, .cta-card:hover {
+  .side-card:hover, .agent-card:hover, .trait-card:hover, .pricing-card:hover, .info-card:hover, .team-card:hover, .cta-card:hover, .tech-card:hover, .highlight-card:hover, .economics-card:hover {
     border-color: rgba(147, 51, 234, 0.4) !important;
     transform: translateY(-4px) !important;
     box-shadow: 0 15px 35px rgba(147, 51, 234, 0.18), 0 0 20px rgba(147, 51, 234, 0.05) !important;
@@ -3332,7 +3379,11 @@
         
 
         const root6 = document.getElementById('slide-wrapper-6').attachShadow({mode: 'open'});
-        root6.innerHTML = `<style>* {
+        root6.innerHTML = `<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Outfit:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+
+<style>* {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
@@ -3672,8 +3723,13 @@
   
   
   
+  
+  
+  
+  
+  
   /* ─── REMIX STYLING INJECTION ─── */
-  :root {
+  :root, :host {
     --black: #000000;
     --purple: #9333ea;
     --purple-light: #c084fc;
@@ -3683,8 +3739,8 @@
     --pink-light: #f9a8d4;
     --white: #ffffff;
     --white-dim: rgba(255,255,255,0.7);
-    --card-bg: rgba(255,255,255,0.04);
-    --card-border: rgba(255,255,255,0.08);
+    --card-bg: rgba(20, 10, 32, 0.85);
+    --card-border: rgba(168, 85, 247, 0.25);
   }
 
   body {
@@ -3837,9 +3893,9 @@
   }
 
   /* rounded glassmorphism cards */
-  .side-card, .agent-card, .trait-card, .pricing-card, .info-card, .audience-card, .metric-card, .compliance-card, .growth-card, .tactic-card, .team-card, .cta-card {
-    background: var(--card-bg) !important;
-    border: 1px solid var(--card-border) !important;
+  :where(.side-card, .agent-card, .trait-card, .pricing-card, .info-card, .audience-card, .metric-card, .compliance-card, .growth-card, .tactic-card, .team-card, .cta-card, .tech-card, .highlight-card, .economics-card) {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
     border-radius: 16px !important;
     backdrop-filter: blur(10px) !important;
     -webkit-backdrop-filter: blur(10px) !important;
@@ -3847,7 +3903,7 @@
     box-shadow: 0 10px 30px rgba(0,0,0,0.15) !important;
   }
   
-  .side-card:hover, .agent-card:hover, .trait-card:hover, .pricing-card:hover, .info-card:hover, .team-card:hover, .cta-card:hover {
+  .side-card:hover, .agent-card:hover, .trait-card:hover, .pricing-card:hover, .info-card:hover, .team-card:hover, .cta-card:hover, .tech-card:hover, .highlight-card:hover, .economics-card:hover {
     border-color: rgba(147, 51, 234, 0.4) !important;
     transform: translateY(-4px) !important;
     box-shadow: 0 15px 35px rgba(147, 51, 234, 0.18), 0 0 20px rgba(147, 51, 234, 0.05) !important;
@@ -3990,7 +4046,11 @@
         
 
         const root7 = document.getElementById('slide-wrapper-7').attachShadow({mode: 'open'});
-        root7.innerHTML = `<style>* {
+        root7.innerHTML = `<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Outfit:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+
+<style>* {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
@@ -4295,8 +4355,13 @@
   
   
   
+  
+  
+  
+  
+  
   /* ─── REMIX STYLING INJECTION ─── */
-  :root {
+  :root, :host {
     --black: #000000;
     --purple: #9333ea;
     --purple-light: #c084fc;
@@ -4306,8 +4371,8 @@
     --pink-light: #f9a8d4;
     --white: #ffffff;
     --white-dim: rgba(255,255,255,0.7);
-    --card-bg: rgba(255,255,255,0.04);
-    --card-border: rgba(255,255,255,0.08);
+    --card-bg: rgba(20, 10, 32, 0.85);
+    --card-border: rgba(168, 85, 247, 0.25);
   }
 
   body {
@@ -4460,9 +4525,9 @@
   }
 
   /* rounded glassmorphism cards */
-  .side-card, .agent-card, .trait-card, .pricing-card, .info-card, .audience-card, .metric-card, .compliance-card, .growth-card, .tactic-card, .team-card, .cta-card {
-    background: var(--card-bg) !important;
-    border: 1px solid var(--card-border) !important;
+  :where(.side-card, .agent-card, .trait-card, .pricing-card, .info-card, .audience-card, .metric-card, .compliance-card, .growth-card, .tactic-card, .team-card, .cta-card, .tech-card, .highlight-card, .economics-card) {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
     border-radius: 16px !important;
     backdrop-filter: blur(10px) !important;
     -webkit-backdrop-filter: blur(10px) !important;
@@ -4470,7 +4535,7 @@
     box-shadow: 0 10px 30px rgba(0,0,0,0.15) !important;
   }
   
-  .side-card:hover, .agent-card:hover, .trait-card:hover, .pricing-card:hover, .info-card:hover, .team-card:hover, .cta-card:hover {
+  .side-card:hover, .agent-card:hover, .trait-card:hover, .pricing-card:hover, .info-card:hover, .team-card:hover, .cta-card:hover, .tech-card:hover, .highlight-card:hover, .economics-card:hover {
     border-color: rgba(147, 51, 234, 0.4) !important;
     transform: translateY(-4px) !important;
     box-shadow: 0 15px 35px rgba(147, 51, 234, 0.18), 0 0 20px rgba(147, 51, 234, 0.05) !important;
@@ -4627,7 +4692,11 @@
         
 
         const root8 = document.getElementById('slide-wrapper-8').attachShadow({mode: 'open'});
-        root8.innerHTML = `<style>* {
+        root8.innerHTML = `<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Outfit:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+
+<style>* {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
@@ -5012,8 +5081,13 @@
   
   
   
+  
+  
+  
+  
+  
   /* ─── REMIX STYLING INJECTION ─── */
-  :root {
+  :root, :host {
     --black: #000000;
     --purple: #9333ea;
     --purple-light: #c084fc;
@@ -5023,8 +5097,8 @@
     --pink-light: #f9a8d4;
     --white: #ffffff;
     --white-dim: rgba(255,255,255,0.7);
-    --card-bg: rgba(255,255,255,0.04);
-    --card-border: rgba(255,255,255,0.08);
+    --card-bg: rgba(20, 10, 32, 0.85);
+    --card-border: rgba(168, 85, 247, 0.25);
   }
 
   body {
@@ -5177,9 +5251,9 @@
   }
 
   /* rounded glassmorphism cards */
-  .side-card, .agent-card, .trait-card, .pricing-card, .info-card, .audience-card, .metric-card, .compliance-card, .growth-card, .tactic-card, .team-card, .cta-card {
-    background: var(--card-bg) !important;
-    border: 1px solid var(--card-border) !important;
+  :where(.side-card, .agent-card, .trait-card, .pricing-card, .info-card, .audience-card, .metric-card, .compliance-card, .growth-card, .tactic-card, .team-card, .cta-card, .tech-card, .highlight-card, .economics-card) {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
     border-radius: 16px !important;
     backdrop-filter: blur(10px) !important;
     -webkit-backdrop-filter: blur(10px) !important;
@@ -5187,7 +5261,7 @@
     box-shadow: 0 10px 30px rgba(0,0,0,0.15) !important;
   }
   
-  .side-card:hover, .agent-card:hover, .trait-card:hover, .pricing-card:hover, .info-card:hover, .team-card:hover, .cta-card:hover {
+  .side-card:hover, .agent-card:hover, .trait-card:hover, .pricing-card:hover, .info-card:hover, .team-card:hover, .cta-card:hover, .tech-card:hover, .highlight-card:hover, .economics-card:hover {
     border-color: rgba(147, 51, 234, 0.4) !important;
     transform: translateY(-4px) !important;
     box-shadow: 0 15px 35px rgba(147, 51, 234, 0.18), 0 0 20px rgba(147, 51, 234, 0.05) !important;
@@ -5359,7 +5433,11 @@
         
 
         const root9 = document.getElementById('slide-wrapper-9').attachShadow({mode: 'open'});
-        root9.innerHTML = `<style>* {
+        root9.innerHTML = `<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Outfit:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+
+<style>* {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
@@ -5745,8 +5823,13 @@
   
   
   
+  
+  
+  
+  
+  
   /* ─── REMIX STYLING INJECTION ─── */
-  :root {
+  :root, :host {
     --black: #000000;
     --purple: #9333ea;
     --purple-light: #c084fc;
@@ -5756,8 +5839,8 @@
     --pink-light: #f9a8d4;
     --white: #ffffff;
     --white-dim: rgba(255,255,255,0.7);
-    --card-bg: rgba(255,255,255,0.04);
-    --card-border: rgba(255,255,255,0.08);
+    --card-bg: rgba(20, 10, 32, 0.85);
+    --card-border: rgba(168, 85, 247, 0.25);
   }
 
   body {
@@ -5910,9 +5993,9 @@
   }
 
   /* rounded glassmorphism cards */
-  .side-card, .agent-card, .trait-card, .pricing-card, .info-card, .audience-card, .metric-card, .compliance-card, .growth-card, .tactic-card, .team-card, .cta-card {
-    background: var(--card-bg) !important;
-    border: 1px solid var(--card-border) !important;
+  :where(.side-card, .agent-card, .trait-card, .pricing-card, .info-card, .audience-card, .metric-card, .compliance-card, .growth-card, .tactic-card, .team-card, .cta-card, .tech-card, .highlight-card, .economics-card) {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
     border-radius: 16px !important;
     backdrop-filter: blur(10px) !important;
     -webkit-backdrop-filter: blur(10px) !important;
@@ -5920,7 +6003,7 @@
     box-shadow: 0 10px 30px rgba(0,0,0,0.15) !important;
   }
   
-  .side-card:hover, .agent-card:hover, .trait-card:hover, .pricing-card:hover, .info-card:hover, .team-card:hover, .cta-card:hover {
+  .side-card:hover, .agent-card:hover, .trait-card:hover, .pricing-card:hover, .info-card:hover, .team-card:hover, .cta-card:hover, .tech-card:hover, .highlight-card:hover, .economics-card:hover {
     border-color: rgba(147, 51, 234, 0.4) !important;
     transform: translateY(-4px) !important;
     box-shadow: 0 15px 35px rgba(147, 51, 234, 0.18), 0 0 20px rgba(147, 51, 234, 0.05) !important;
@@ -6117,7 +6200,11 @@
         
 
         const root10 = document.getElementById('slide-wrapper-10').attachShadow({mode: 'open'});
-        root10.innerHTML = `<style>* {
+        root10.innerHTML = `<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Outfit:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+
+<style>* {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
@@ -6451,8 +6538,13 @@
   
   
   
+  
+  
+  
+  
+  
   /* ─── REMIX STYLING INJECTION ─── */
-  :root {
+  :root, :host {
     --black: #000000;
     --purple: #9333ea;
     --purple-light: #c084fc;
@@ -6462,8 +6554,8 @@
     --pink-light: #f9a8d4;
     --white: #ffffff;
     --white-dim: rgba(255,255,255,0.7);
-    --card-bg: rgba(255,255,255,0.04);
-    --card-border: rgba(255,255,255,0.08);
+    --card-bg: rgba(20, 10, 32, 0.85);
+    --card-border: rgba(168, 85, 247, 0.25);
   }
 
   body {
@@ -6616,9 +6708,9 @@
   }
 
   /* rounded glassmorphism cards */
-  .side-card, .agent-card, .trait-card, .pricing-card, .info-card, .audience-card, .metric-card, .compliance-card, .growth-card, .tactic-card, .team-card, .cta-card {
-    background: var(--card-bg) !important;
-    border: 1px solid var(--card-border) !important;
+  :where(.side-card, .agent-card, .trait-card, .pricing-card, .info-card, .audience-card, .metric-card, .compliance-card, .growth-card, .tactic-card, .team-card, .cta-card, .tech-card, .highlight-card, .economics-card) {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
     border-radius: 16px !important;
     backdrop-filter: blur(10px) !important;
     -webkit-backdrop-filter: blur(10px) !important;
@@ -6626,7 +6718,7 @@
     box-shadow: 0 10px 30px rgba(0,0,0,0.15) !important;
   }
   
-  .side-card:hover, .agent-card:hover, .trait-card:hover, .pricing-card:hover, .info-card:hover, .team-card:hover, .cta-card:hover {
+  .side-card:hover, .agent-card:hover, .trait-card:hover, .pricing-card:hover, .info-card:hover, .team-card:hover, .cta-card:hover, .tech-card:hover, .highlight-card:hover, .economics-card:hover {
     border-color: rgba(147, 51, 234, 0.4) !important;
     transform: translateY(-4px) !important;
     box-shadow: 0 15px 35px rgba(147, 51, 234, 0.18), 0 0 20px rgba(147, 51, 234, 0.05) !important;
@@ -6791,6 +6883,12 @@
           prevActive.classList.add('exit-left');
         } else if (direction === 'prev') {
           prevActive.classList.add('exit-right');
+        }
+        
+        // Pause any playing videos in the slide we are exiting (handling Shadow DOM)
+        const shadow = prevActive.shadowRoot;
+        if (shadow) {
+          shadow.querySelectorAll('video').forEach(video => video.pause());
         }
       }
       

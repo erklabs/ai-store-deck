@@ -8,14 +8,14 @@ from bs4 import BeautifulSoup
 sys.stdout.reconfigure(encoding='utf-8')
 
 # Directory variables
-beta_dir = r"c:\Users\Ruuji\Documents\Ai Store Presentation v1"
+beta_dir = os.path.dirname(os.path.abspath(__file__))
 print_path = os.path.join(beta_dir, "print.html")
 pdf_path = os.path.join(beta_dir, "presentation.pdf")
 
 # Sleek typography and brand styles from remix.html to inject (Cursor None removed)
 PREMIUM_STYLING = """
   /* ─── REMIX STYLING INJECTION ─── */
-  :root {
+  :root, :host {
     --black: #000000;
     --purple: #9333ea;
     --purple-light: #c084fc;
@@ -25,8 +25,8 @@ PREMIUM_STYLING = """
     --pink-light: #f9a8d4;
     --white: #ffffff;
     --white-dim: rgba(255,255,255,0.7);
-    --card-bg: rgba(255,255,255,0.04);
-    --card-border: rgba(255,255,255,0.08);
+    --card-bg: rgba(20, 10, 32, 0.85);
+    --card-border: rgba(168, 85, 247, 0.25);
   }
 
   body {
@@ -179,9 +179,9 @@ PREMIUM_STYLING = """
   }
 
   /* rounded glassmorphism cards */
-  .side-card, .agent-card, .trait-card, .pricing-card, .info-card, .audience-card, .metric-card, .compliance-card, .growth-card, .tactic-card, .team-card, .cta-card {
-    background: var(--card-bg) !important;
-    border: 1px solid var(--card-border) !important;
+  :where(.side-card, .agent-card, .trait-card, .pricing-card, .info-card, .audience-card, .metric-card, .compliance-card, .growth-card, .tactic-card, .team-card, .cta-card, .tech-card, .highlight-card, .economics-card) {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
     border-radius: 16px !important;
     backdrop-filter: blur(10px) !important;
     -webkit-backdrop-filter: blur(10px) !important;
@@ -189,7 +189,7 @@ PREMIUM_STYLING = """
     box-shadow: 0 10px 30px rgba(0,0,0,0.15) !important;
   }
   
-  .side-card:hover, .agent-card:hover, .trait-card:hover, .pricing-card:hover, .info-card:hover, .team-card:hover, .cta-card:hover {
+  .side-card:hover, .agent-card:hover, .trait-card:hover, .pricing-card:hover, .info-card:hover, .team-card:hover, .cta-card:hover, .tech-card:hover, .highlight-card:hover, .economics-card:hover {
     border-color: rgba(147, 51, 234, 0.4) !important;
     transform: translateY(-4px) !important;
     box-shadow: 0 15px 35px rgba(147, 51, 234, 0.18), 0 0 20px rgba(147, 51, 234, 0.05) !important;
@@ -395,14 +395,24 @@ if os.path.exists(print_path):
         with open(file_path, 'r', encoding='utf-8') as f:
             html = f.read()
         soup = BeautifulSoup(html, 'html.parser')
+        parts = []
+        
+        # Extract external stylesheet link tags so they cross the Shadow DOM boundary into shadow roots
+        for link in soup.find_all('link'):
+            if link.get('rel') and 'stylesheet' in link.get('rel'):
+                parts.append(str(link))
+                
+        # Extract inline style tags
         styles = soup.find_all('style')
+        for style in styles:
+            parts.append(str(style))
+            
+        # Extract the slide content container
         container = soup.find(class_='slide-container')
         if not container:
             return None
-        parts = []
-        for style in styles:
-            parts.append(str(style))
         parts.append(str(container))
+        
         combined = "\n\n".join(parts)
         combined = combined.replace("`", "\\`").replace("${", "\\${")
         # Escape </script> to prevent early script closing in slides.html template literal
@@ -973,6 +983,8 @@ slides_template = f"""<!DOCTYPE html>
       --pink: #ec4899;
       --pink-light: #f9a8d4;
       --white: #ffffff;
+      --card-bg: rgba(20, 10, 32, 0.85);
+      --card-border: rgba(168, 85, 247, 0.25);
     }}
     * {{
       box-sizing: border-box;
@@ -1113,6 +1125,12 @@ slides_template = f"""<!DOCTYPE html>
           prevActive.classList.add('exit-left');
         }} else if (direction === 'prev') {{
           prevActive.classList.add('exit-right');
+        }}
+        
+        // Pause any playing videos in the slide we are exiting (handling Shadow DOM)
+        const shadow = prevActive.shadowRoot;
+        if (shadow) {{
+          shadow.querySelectorAll('video').forEach(video => video.pause());
         }}
       }}
       

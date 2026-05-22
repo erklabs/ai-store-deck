@@ -1,15 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The AI Store - Complete Presentation Slide Deck</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700;800;900&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <style>
     :root {
@@ -23,13 +20,11 @@
       --card-bg: rgba(20, 10, 32, 0.85);
       --card-border: rgba(168, 85, 247, 0.25);
     }
-
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
-
     body {
       background: var(--black) !important;
       color: var(--white) !important;
@@ -41,45 +36,29 @@
       justify-content: center !important;
       align-items: center !important;
     }
-
+    
     /* Cinematic Background Noise */
     body::before {
       content: '' !important;
-      position: fixed !important;
-      inset: 0 !important;
+      position: fixed !important; inset: 0 !important;
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E") !important;
-      opacity: 0.022 !important;
-      pointer-events: none !important;
-      z-index: 1000 !important;
+      opacity: 0.022 !important; pointer-events: none !important; z-index: 1000 !important;
     }
-
+    
     /* Top-level Ambient Glows and Orb */
     .hero-glow-purple {
-      position: absolute !important;
-      bottom: -100px !important;
-      right: -5% !important;
-      width: 60vw !important;
-      height: 60vw !important;
-      border-radius: 50% !important;
-      background: radial-gradient(circle, rgba(147, 51, 234, 0.18) 0%, transparent 65%) !important;
-      filter: blur(50px) !important;
-      pointer-events: none !important;
+      position: absolute !important; bottom: -100px !important; right: -5% !important;
+      width: 60vw !important; height: 60vw !important; border-radius: 50% !important;
+      background: radial-gradient(circle, rgba(147,51,234,0.18) 0%, transparent 65%) !important;
+      filter: blur(50px) !important; pointer-events: none !important;
       animation: glow-pulse 6s ease-in-out infinite alternate !important;
       z-index: 2 !important;
     }
-
     @keyframes glow-pulse {
-      from {
-        opacity: 0.8;
-        transform: scale(0.95);
-      }
-
-      to {
-        opacity: 1.0;
-        transform: scale(1.05);
-      }
+      from { opacity: 0.8; transform: scale(0.95); }
+      to   { opacity: 1.0; transform: scale(1.05); }
     }
-
+    
     .orb {
       position: absolute !important;
       border-radius: 50% !important;
@@ -90,36 +69,17 @@
       z-index: 2 !important;
       pointer-events: none !important;
     }
-
     .orb::after {
       content: '' !important;
-      position: absolute !important;
-      inset: 5px !important;
+      position: absolute !important; inset: 5px !important;
       border-radius: 50% !important;
-      background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.6), rgba(0, 0, 0, 0.3)) !important;
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.6), rgba(0,0,0,0.3)) !important;
     }
-
-    .orb-tr {
-      top: 8% !important;
-      right: 5% !important;
-      width: 145px;
-      height: 145px;
-    }
-
+    .orb-tr { top: 8% !important; right: 5% !important; width: 145px; height: 145px; }
     @keyframes float {
-
-      0%,
-      100% {
-        transform: translateY(0px) rotate(0deg);
-      }
-
-      33% {
-        transform: translateY(-18px) rotate(6deg);
-      }
-
-      66% {
-        transform: translateY(10px) rotate(-4deg);
-      }
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      33%      { transform: translateY(-18px) rotate(6deg); }
+      66%      { transform: translateY(10px) rotate(-4deg); }
     }
 
     /* Presentation Deck Viewport */
@@ -158,14 +118,12 @@
       opacity: 0 !important;
       transform: scale(0.96) translate3d(-30px, 0, 0) !important;
     }
-
     .slide-wrapper.exit-right {
       opacity: 0 !important;
       transform: scale(0.96) translate3d(30px, 0, 0) !important;
     }
   </style>
 </head>
-
 <body>
   <div class="hero-glow-purple"></div>
   <div class="orb orb-tr"></div>
@@ -185,286 +143,306 @@
 
   <script>
     // 1. Mount Slides Shadow DOM roots
-
-    const root1 = document.getElementById('slide-wrapper-1').attachShadow({ mode: 'open' });
-    root1.innerHTML = `<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Outfit:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+    
+        const root1 = document.getElementById('slide-wrapper-1').attachShadow({mode: 'open'});
+        root1.innerHTML = `<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Outfit:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
 
-<style>* {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+<style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-        body {
-            width: 100%;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: #07030d;
-            font-family: 'Poppins', 'Outfit', sans-serif;
-            overflow: hidden;
-        }
+    body {
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #07030d;
+      font-family: 'Poppins', 'Outfit', sans-serif;
+      overflow: hidden;
+    }
 
-        .slide-container {
-            width: 100%;
-            max-width: 1280px;
-            height: 720px;
-            position: relative;
-            overflow: hidden;
-            background: linear-gradient(135deg, #0a0515 0%, #130922 50%, #06020a 100%);
-            border-radius: 0;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-        }
+    .slide-container {
+      width: 100%;
+      max-width: 1280px;
+      height: 720px;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, #0a0515 0%, #130922 50%, #06020a 100%);
+      border-radius: 0;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    }
 
-        /* Background pattern */
-        .grid-pattern {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: linear-gradient(rgba(168, 85, 247, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(168, 85, 247, 0.03) 1px, transparent 1px);
-            background-size: 40px 40px;
-            z-index: 1;
-        }
+    /* Background pattern */
+    .grid-pattern {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: linear-gradient(rgba(168, 85, 247, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(168, 85, 247, 0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+      z-index: 1;
+    }
 
-        /* Content wrapper */
-        .content-wrapper {
-            position: relative;
-            z-index: 10;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 50px 70px;
-        }
+    /* Content wrapper */
+    .content-wrapper {
+      position: relative;
+      z-index: 10;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 50px 70px;
+    }
 
-        /* Badge */
-        .innovation-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: rgba(168, 85, 247, 0.08);
-            border: 1px solid rgba(168, 85, 247, 0.25);
-            padding: 12px 28px;
-            border-radius: 0;
-            color: #d8b4fe;
-            font-size: 16px;
-            font-weight: 600;
-            letter-spacing: 2px;
-            margin-bottom: 35px;
-            text-transform: uppercase;
-            transition: all 0.3s ease;
-        }
+    /* Badge */
+    .innovation-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(168, 85, 247, 0.08);
+      border: 1px solid rgba(168, 85, 247, 0.25);
+      padding: 12px 28px;
+      border-radius: 0;
+      color: #d8b4fe;
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      margin-bottom: 35px;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+    }
 
-        .innovation-badge:hover {
-            background: rgba(168, 85, 247, 0.15);
-            border-color: rgba(168, 85, 247, 0.4);
-        }
+    .innovation-badge:hover {
+      background: rgba(168, 85, 247, 0.15);
+      border-color: rgba(168, 85, 247, 0.4);
+    }
 
-        .innovation-badge i {
-            font-size: 16px;
-        }
+    .innovation-badge i {
+      font-size: 16px;
+    }
 
-        /* Decorative line */
-        .decorative-line {
-            width: 80px;
-            height: 3px;
-            background: linear-gradient(90deg, #a855f7, #f472b6);
-            margin: 0 auto 35px;
-        }
+    /* Decorative line */
+    .decorative-line {
+      width: 80px;
+      height: 3px;
+      background: linear-gradient(90deg, #a855f7, #f472b6);
+      margin: 0 auto 35px;
+    }
 
-        /* Main title */
-        h1 {
-            font-size: 72px;
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 30px;
-            color: #ffffff;
-            letter-spacing: -1px;
-        }
+    /* Main title */
+    h1 {
+      font-size: 72px;
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 30px;
+      color: #ffffff;
+      letter-spacing: -1px;
+    }
 
-        .gradient-text {
-            background: linear-gradient(135deg, #d8b4fe 0%, #f472b6 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+    .gradient-text {
+      background: linear-gradient(135deg, #d8b4fe 0%, #f472b6 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
 
-        /* Subtitle */
-        .subtitle {
-            font-size: 26px;
-            color: #ffffff;
-            margin-bottom: 45px;
-            line-height: 1.4;
-            font-weight: 300;
-        }
+    /* Subtitle */
+    .subtitle {
+      font-size: 26px;
+      color: #ffffff;
+      margin-bottom: 45px;
+      line-height: 1.4;
+      font-weight: 300;
+    }
 
-        .highlight {
-            color: #f472b6;
-            font-weight: 600;
-        }
+    .highlight {
+      color: #f472b6;
+      font-weight: 600;
+    }
 
-        /* Date badge */
-        .date-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: rgba(244, 114, 182, 0.1);
-            border: 1px solid rgba(244, 114, 182, 0.25);
-            padding: 14px 32px;
-            border-radius: 0;
-            color: #fbcfe8;
-            font-size: 16px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
+    /* Date badge */
+    .date-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(244, 114, 182, 0.1);
+      border: 1px solid rgba(244, 114, 182, 0.25);
+      padding: 14px 32px;
+      border-radius: 0;
+      color: #fbcfe8;
+      font-size: 16px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
 
-        .date-badge:hover {
-            background: rgba(244, 114, 182, 0.2);
-            border-color: rgba(244, 114, 182, 0.4);
-        }
+    .date-badge:hover {
+      background: rgba(244, 114, 182, 0.2);
+      border-color: rgba(244, 114, 182, 0.4);
+    }
 
-        /* Corner accents */
-        .corner-accent {
-            position: absolute;
-            width: 40px;
-            height: 40px;
-            border: 2px solid rgba(168, 85, 247, 0.2);
-        }
+    /* Corner accents */
+    .corner-accent {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      border: 2px solid rgba(168, 85, 247, 0.2);
+    }
 
-        .top-left {
-            top: 30px;
-            left: 30px;
-            border-right: none;
-            border-bottom: none;
-        }
+    .top-left {
+      top: 30px;
+      left: 30px;
+      border-right: none;
+      border-bottom: none;
+    }
 
-        .top-right {
-            top: 30px;
-            right: 30px;
-            border-left: none;
-            border-bottom: none;
-        }
+    .top-right {
+      top: 30px;
+      right: 30px;
+      border-left: none;
+      border-bottom: none;
+    }
 
-        .bottom-left {
-            bottom: 30px;
-            left: 30px;
-            border-right: none;
-            border-top: none;
-        }
+    .bottom-left {
+      bottom: 30px;
+      left: 30px;
+      border-right: none;
+      border-top: none;
+    }
 
-        .bottom-right {
-            bottom: 30px;
-            right: 30px;
-            border-left: none;
-            border-top: none;
-        }
-        
+    .bottom-right {
+      bottom: 30px;
+      right: 30px;
+      border-left: none;
+      border-top: none;
+    }
 
 
-        /* Hide premium navigation chevrons for clean fullscreen presentation */
-        .slide-nav-overlay {
-            display: none !important;
-        }
 
-        /* High-fidelity premium page slide transitions */
-        .content-wrapper {
-            opacity: 0;
-            transform: translate3d(0, 0, 0);
-            transition: opacity 0.35s cubic-bezier(0.25, 1, 0.5, 1), transform 0.35s cubic-bezier(0.25, 1, 0.5, 1) !important;
-        }
-        .content-wrapper.slide-in-right {
-            transform: translate3d(50px, 0, 0);
-        }
-        .content-wrapper.slide-in-left {
-            transform: translate3d(-50px, 0, 0);
-        }
-        .content-wrapper.slide-in-fade {
-            transform: translate3d(0, 0, 0);
-        }
-        .content-wrapper.visible {
-            opacity: 1;
-            transform: translate3d(0, 0, 0) !important;
-        }
-        .content-wrapper.exit-to-left {
-            opacity: 0 !important;
-            transform: translate3d(-50px, 0, 0) !important;
-        }
-        .content-wrapper.exit-to-right {
-            opacity: 0 !important;
-            transform: translate3d(50px, 0, 0) !important;
-        }
+    /* Hide premium navigation chevrons for clean fullscreen presentation */
+    .slide-nav-overlay {
+      display: none !important;
+    }
 
-        /* Perfect 1080p Landscape Print Resolution */
-        @page {
-            size: 1280px 720px;
-            margin: 0 !important;
-        }
-        :host {
-            display: block !important;
-            background: #07030d !important;
-            width: 100% !important;
-            height: 100% !important;
-        }
-        @media print {
-            * {
-                -webkit-print-color-adjust: exact !important;
-                print-color-adjust: exact !important;
-            }
-            html, body {
-                margin: 0 !important;
-                padding: 0 !important;
-                background: #07030d !important;
-                overflow: visible !important;
-            }
-            .slide-container {
-                width: 1280px !important;
-                height: 720px !important;
-                transform: none !important;
-                transform-origin: top left !important;
-                background: linear-gradient(135deg, #0a0515 0%, #130922 50%, #06020a 100%) !important;
-                box-shadow: none !important;
-                border: none !important;
-            }
-            .slide-nav-overlay {
-                display: none !important;
-            }
-            
-            /* Layout Safety Reset to prevent vertical overflows on print */
-            .content-wrapper {
-                padding: 30px 45px !important;
-            }
-            .header {
-                margin-bottom: 20px !important;
-            }
-            p, li, span, div {
-                line-height: 1.45 !important;
-            }
+    /* High-fidelity premium page slide transitions */
+    .content-wrapper {
+      opacity: 0;
+      transform: translate3d(0, 0, 0);
+      transition: opacity 0.35s cubic-bezier(0.25, 1, 0.5, 1), transform 0.35s cubic-bezier(0.25, 1, 0.5, 1) !important;
+    }
+
+    .content-wrapper.slide-in-right {
+      transform: translate3d(50px, 0, 0);
+    }
+
+    .content-wrapper.slide-in-left {
+      transform: translate3d(-50px, 0, 0);
+    }
+
+    .content-wrapper.slide-in-fade {
+      transform: translate3d(0, 0, 0);
+    }
+
+    .content-wrapper.visible {
+      opacity: 1;
+      transform: translate3d(0, 0, 0) !important;
+    }
+
+    .content-wrapper.exit-to-left {
+      opacity: 0 !important;
+      transform: translate3d(-50px, 0, 0) !important;
+    }
+
+    .content-wrapper.exit-to-right {
+      opacity: 0 !important;
+      transform: translate3d(50px, 0, 0) !important;
+    }
+
+    /* Perfect 1080p Landscape Print Resolution */
+    @page {
+      size: 1280px 720px;
+      margin: 0 !important;
+    }
+
+    :host {
+      display: block !important;
+      background: #07030d !important;
+      width: 100% !important;
+      height: 100% !important;
+    }
+
+    @media print {
+      * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+
+      html,
+      body {
+        margin: 0 !important;
+        padding: 0 !important;
+        background: #07030d !important;
+        overflow: visible !important;
+      }
+
+      .slide-container {
+        width: 1280px !important;
+        height: 720px !important;
+        transform: none !important;
+        transform-origin: top left !important;
+        background: linear-gradient(135deg, #0a0515 0%, #130922 50%, #06020a 100%) !important;
+        box-shadow: none !important;
+        border: none !important;
+      }
+
+      .slide-nav-overlay {
+        display: none !important;
+      }
+
+      /* Layout Safety Reset to prevent vertical overflows on print */
+      .content-wrapper {
+        padding: 30px 45px !important;
+      }
+
+      .header {
+        margin-bottom: 20px !important;
+      }
+
+      p,
+      li,
+      span,
+      div {
+        line-height: 1.45 !important;
+      }
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     
-        }
-
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
   
   /* ─── REMIX STYLING INJECTION ─── */
   :root, :host {
@@ -742,19 +720,19 @@
 <div class="decorative-line"></div>
 <h1>The AI <span class="gradient-text">Store 🛒</span></h1>
 <p class="subtitle">
-                Bridging the gap to <span class="highlight">Autonomous Utility.</span><br/>
-                Zero-setup execution for everyone.
-            </p>
+        Bridging the gap to <span class="highlight">Autonomous Utility.</span><br/>
+        Zero-setup execution for everyone.
+      </p>
 <div class="date-badge">
 <i class="fa-regular fa-calendar"></i>
 <span>MAY 2026</span>
 </div>
 </div>
 </div>`;
+        
 
-
-    const root2 = document.getElementById('slide-wrapper-2').attachShadow({ mode: 'open' });
-    root2.innerHTML = `<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Outfit:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+        const root2 = document.getElementById('slide-wrapper-2').attachShadow({mode: 'open'});
+        root2.innerHTML = `<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Outfit:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
 
@@ -1081,6 +1059,8 @@
     
         }
 
+  
+  
   
   
   
@@ -1470,10 +1450,10 @@
             init();
         }<\/script>
 </div>`;
+        
 
-
-    const root3 = document.getElementById('slide-wrapper-3').attachShadow({ mode: 'open' });
-    root3.innerHTML = `<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Outfit:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+        const root3 = document.getElementById('slide-wrapper-3').attachShadow({mode: 'open'});
+        root3.innerHTML = `<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Outfit:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
 
@@ -1818,6 +1798,8 @@
   
   
   
+  
+  
   /* ─── REMIX STYLING INJECTION ─── */
   :root, :host {
     --black: #000000;
@@ -2136,10 +2118,10 @@
 </div>
 </div>
 </div>`;
+        
 
-
-    const root4 = document.getElementById('slide-wrapper-4').attachShadow({ mode: 'open' });
-    root4.innerHTML = `<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Outfit:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+        const root4 = document.getElementById('slide-wrapper-4').attachShadow({mode: 'open'});
+        root4.innerHTML = `<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Outfit:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
 
@@ -2508,6 +2490,8 @@
   
   
   
+  
+  
   /* ─── REMIX STYLING INJECTION ─── */
   :root, :host {
     --black: #000000;
@@ -2817,10 +2801,10 @@
 </div>
 </div>
 </div>`;
+        
 
-
-    const root5 = document.getElementById('slide-wrapper-5').attachShadow({ mode: 'open' });
-    root5.innerHTML = `<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Outfit:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+        const root5 = document.getElementById('slide-wrapper-5').attachShadow({mode: 'open'});
+        root5.innerHTML = `<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Outfit:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
 
@@ -3112,6 +3096,8 @@
     
         }
 
+  
+  
   
   
   
@@ -3433,10 +3419,10 @@
 </div>
 </div>
 </div>`;
+        
 
-
-    const root6 = document.getElementById('slide-wrapper-6').attachShadow({ mode: 'open' });
-    root6.innerHTML = `<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Outfit:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+        const root6 = document.getElementById('slide-wrapper-6').attachShadow({mode: 'open'});
+        root6.innerHTML = `<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Outfit:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
 
@@ -3788,6 +3774,8 @@
   
   
   
+  
+  
   /* ─── REMIX STYLING INJECTION ─── */
   :root, :host {
     --black: #000000;
@@ -4103,10 +4091,10 @@
 </div>
 </div>
 </div>`;
+        
 
-
-    const root7 = document.getElementById('slide-wrapper-7').attachShadow({ mode: 'open' });
-    root7.innerHTML = `<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Outfit:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+        const root7 = document.getElementById('slide-wrapper-7').attachShadow({mode: 'open'});
+        root7.innerHTML = `<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Outfit:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
 
@@ -4405,6 +4393,8 @@
     
         }
 
+  
+  
   
   
   
@@ -4752,10 +4742,10 @@
 </div>
 </div>
 </div>`;
+        
 
-
-    const root8 = document.getElementById('slide-wrapper-8').attachShadow({ mode: 'open' });
-    root8.innerHTML = `<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Outfit:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+        const root8 = document.getElementById('slide-wrapper-8').attachShadow({mode: 'open'});
+        root8.innerHTML = `<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Outfit:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
 
@@ -5152,6 +5142,8 @@
   
   
   
+  
+  
   /* ─── REMIX STYLING INJECTION ─── */
   :root, :host {
     --black: #000000;
@@ -5496,10 +5488,10 @@
 </div>
 </div>
 </div>`;
+        
 
-
-    const root9 = document.getElementById('slide-wrapper-9').attachShadow({ mode: 'open' });
-    root9.innerHTML = `<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Outfit:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+        const root9 = document.getElementById('slide-wrapper-9').attachShadow({mode: 'open'});
+        root9.innerHTML = `<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Outfit:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
 
@@ -5897,6 +5889,8 @@
   
   
   
+  
+  
   /* ─── REMIX STYLING INJECTION ─── */
   :root, :host {
     --black: #000000;
@@ -6266,10 +6260,10 @@
 </div>
 </div>
 </div>`;
+        
 
-
-    const root10 = document.getElementById('slide-wrapper-10').attachShadow({ mode: 'open' });
-    root10.innerHTML = `<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Outfit:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+        const root10 = document.getElementById('slide-wrapper-10').attachShadow({mode: 'open'});
+        root10.innerHTML = `<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Outfit:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
 
@@ -6615,6 +6609,8 @@
   
   
   
+  
+  
   /* ─── REMIX STYLING INJECTION ─── */
   :root, :host {
     --black: #000000;
@@ -6935,15 +6931,15 @@
 </div>
 </div>
 </div>`;
-
+        
 
     // 2. Setup presentation slide transitions
     let currentSlide = 1;
     const totalSlides = 10;
-
+    
     function showSlide(index, direction) {
       if (index < 1 || index > totalSlides) return;
-
+      
       const prevActive = document.querySelector('.slide-wrapper.active');
       if (prevActive) {
         prevActive.classList.remove('active', 'exit-left', 'exit-right');
@@ -6952,29 +6948,29 @@
         } else if (direction === 'prev') {
           prevActive.classList.add('exit-right');
         }
-
+        
         // Pause any playing videos in the slide we are exiting (handling Shadow DOM)
         const shadow = prevActive.shadowRoot;
         if (shadow) {
           shadow.querySelectorAll('video').forEach(video => video.pause());
         }
       }
-
+      
       currentSlide = index;
       const activeSlide = document.getElementById(`slide-wrapper-${currentSlide}`);
       activeSlide.classList.remove('exit-left', 'exit-right');
       activeSlide.classList.add('active');
-
+      
       // Update browser history hash
       history.replaceState(null, null, `#slide-${currentSlide}`);
     }
-
+    
     // Keyboard keydown navigator
     document.addEventListener('keydown', e => {
       if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.isContentEditable) {
-        return;
+        return; 
       }
-
+      
       if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown' || e.key === 'Enter') {
         e.preventDefault();
         showSlide(currentSlide + 1, 'next');
@@ -7025,21 +7021,21 @@
       const baseHeight = 720;
       const winWidth = window.innerWidth;
       const winHeight = window.innerHeight;
-
+      
       const scaleX = winWidth / baseWidth;
       const scaleY = winHeight / baseHeight;
       const scale = Math.min(scaleX, scaleY);
-
+      
       const viewport = document.querySelector('.presentation-viewport');
       if (viewport) {
         viewport.style.transform = `scale(${scale})`;
       }
     };
-
+    
     window.addEventListener('resize', resizeDeck);
     window.addEventListener('DOMContentLoaded', () => {
       resizeDeck();
-
+      
       const hash = window.location.hash;
       const slideMatch = hash.match(/#slide-(\d+)/);
       if (slideMatch) {
@@ -7055,5 +7051,4 @@
     });
   </script>
 </body>
-
 </html>

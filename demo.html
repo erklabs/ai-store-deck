@@ -1940,6 +1940,8 @@
   
   
   
+  
+  
   /* ─── REMIX STYLING INJECTION ─── */
   :root, :host {
     --black: #000000;
@@ -2627,7 +2629,7 @@
                 font-weight: 700 !important;
             }
             </style>
-            <style id="profile-styles">
+<style id="profile-styles">
             /* ==========================================
                PROFILE HUB PREMIUM STYLING
                ========================================== */
@@ -3662,350 +3664,332 @@
 </div>
 </div>
 </div>
-
 <!-- 6. USER PROFILE PAGE -->
 <div class="page-content" id="page-profile" style="display: none;">
-    <div class="page-header">
-        <h1 class="page-title">User Profile Hub 👤</h1>
-        <p class="page-subtitle">Manage developer accounts, configure connected swarm services, and audit secure sandbox storage permissions.</p>
-    </div>
-
-    <div class="profile-layout">
-        <!-- Sidebar Column: Profile details & keys -->
-        <div class="profile-sidebar-card">
-            <div class="profile-avatar-wrapper" id="profile-avatar-trigger">
-                <div class="profile-avatar">
-                    <i class="fa-solid fa-user-astronaut"></i>
-                </div>
-                <div class="profile-avatar-upload-icon">
-                    <i class="fa-solid fa-camera"></i>
-                </div>
-            </div>
-            
-            <div style="margin-top: 10px;">
-                <h3 class="profile-username">Engin Can Erköseoglu</h3>
-                <span class="profile-role-badge">Lead System Architect</span>
-            </div>
-
-            <div class="profile-meta-list">
-                <div class="profile-meta-item">
-                    <span>Email:</span>
-                    <span>engin@erklabs.com</span>
-                </div>
-                <div class="profile-meta-item">
-                    <span>Fingerprint ID:</span>
-                    <span style="font-family: monospace;">7F8A-9C2D-1E0F</span>
-                </div>
-                <div class="profile-meta-item">
-                    <span>Bridge Auth:</span>
-                    <span style="color: var(--green-neon);"><i class="fa-solid fa-circle-check"></i> Enabled</span>
-                </div>
-                <div class="profile-meta-item">
-                    <span>Active Storage:</span>
-                    <span id="vault-active-storage-size">2.1 MB</span>
-                </div>
-            </div>
-
-            <!-- API Keys Subsection -->
-            <div class="api-keys-container">
-                <h4 style="font-size: 11px; text-transform: uppercase; color: white; letter-spacing: 1px; font-weight: 700; text-align: left; margin-bottom: 8px;">Swarm API Keys</h4>
-                
-                <div class="api-key-row">
-                    <div class="api-key-label">OpenAI Key</div>
-                    <div class="api-key-input-wrapper">
-                        <input class="api-key-input" id="key-openai" readonly="" type="password" value="sk-proj-4a8f9c2d1e0f3b4a5c6d7e8f9a0b1c2d3e4f5a6b7c8"/>
-                        <button class="api-key-btn toggle-key" data-target="key-openai">
-                            <i class="fa-solid fa-eye"></i>
-                        </button>
-                        <button class="api-key-btn copy-key" data-target="key-openai">
-                            <i class="fa-solid fa-copy"></i>
-                        </button>
-                    </div>
-                </div>
-
-                <div class="api-key-row">
-                    <div class="api-key-label">Anthropic Key</div>
-                    <div class="api-key-input-wrapper">
-                        <input class="api-key-input" id="key-anthropic" readonly="" type="password" value="sk-ant-9w1a8s7d6f5g4h3j2k1l0p9o8i7u6y5t4r3e2w1"/>
-                        <button class="api-key-btn toggle-key" data-target="key-anthropic">
-                            <i class="fa-solid fa-eye"></i>
-                        </button>
-                        <button class="api-key-btn copy-key" data-target="key-anthropic">
-                            <i class="fa-solid fa-copy"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Main Column: Secure Storage & Connected Social Media -->
-        <div>
-            <!-- Section 1: File Storage Vault -->
-            <div class="profile-section-card">
-                <h2>
-                    <i class="fa-solid fa-folder-open"></i>
-                    <span>Secure Context Files Vault</span>
-                </h2>
-                <p class="card-subtitle">Upload context files (PDF, XLSX, JSON) directly into a secure encrypted localized VM cache. Toggling keys dictates which agent swarms have read/write access.</p>
-
-                <!-- Drag and Drop Upload Zone -->
-                <div class="profile-upload-zone" id="profile-dropzone">
-                    <i class="fa-solid fa-cloud-arrow-up"></i>
-                    <div class="profile-upload-text">Drag & drop files here or <span style="color: var(--purple-light); text-decoration: underline;">browse folders</span></div>
-                    <div class="profile-upload-subtext">Supports PDF, CSV, XLSX, DOCX, JSON (Max 50MB)</div>
-                    <div class="profile-upload-progress-bar" id="profile-upload-progress"></div>
-                    <input id="profile-file-input" style="display: none;" type="file" accept=".pdf,.csv,.xlsx,.docx,.json,.txt"/>
-                </div>
-
-                <!-- Live File Table -->
-                <div class="table-responsive-wrapper">
-                <table class="file-vault-table">
-                    <thead>
-                        <tr>
-                            <th>File Name</th>
-                            <th>Size</th>
-                            <th>Status</th>
-                            <th>Agent Access Controls</th>
-                            <th style="text-align: right;">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody id="file-vault-rows">
-                        <tr id="row-file-1">
-                            <td>
-                                <div class="file-name-cell">
-                                    <i class="fa-solid fa-file-excel file-icon" style="color: #107c41;"></i>
-                                    <span>financial_statement_q1.xlsx</span>
-                                </div>
-                            </td>
-                            <td>1.2 MB</td>
-                            <td>
-                                <span class="file-status-badge encrypted">Encrypted</span>
-                            </td>
-                            <td>
-                                <div class="perm-grid">
-                                    <div class="perm-switch-wrapper">
-                                        <div class="perm-switch-label">Travel</div>
-                                        <label class="premium-switch">
-                                            <input class="agent-perm-toggle" data-file="financial_statement_q1.xlsx" data-agent="travel" type="checkbox"/>
-                                            <span class="switch-slider"></span>
-                                        </label>
-                                    </div>
-                                    <div class="perm-switch-wrapper">
-                                        <div class="perm-switch-label">Finance</div>
-                                        <label class="premium-switch">
-                                            <input class="agent-perm-toggle" data-file="financial_statement_q1.xlsx" data-agent="finance" checked="" type="checkbox"/>
-                                            <span class="switch-slider"></span>
-                                        </label>
-                                    </div>
-                                    <div class="perm-switch-wrapper">
-                                        <div class="perm-switch-label">Food</div>
-                                        <label class="premium-switch">
-                                            <input class="agent-perm-toggle" data-file="financial_statement_q1.xlsx" data-agent="food" type="checkbox"/>
-                                            <span class="switch-slider"></span>
-                                        </label>
-                                    </div>
-                                </div>
-                            </td>
-                            <td style="text-align: right;">
-                                <button class="file-delete-btn" data-row="row-file-1" data-filename="financial_statement_q1.xlsx">
-                                    <i class="fa-solid fa-trash-can"></i>
-                                </button>
-                            </td>
-                        </tr>
-                        <tr id="row-file-2">
-                            <td>
-                                <div class="file-name-cell">
-                                    <i class="fa-solid fa-file-pdf file-icon" style="color: #f40f02;"></i>
-                                    <span>tokyo_trip_itinerary.pdf</span>
-                                </div>
-                            </td>
-                            <td>840 KB</td>
-                            <td>
-                                <span class="file-status-badge decrypted">Decrypted</span>
-                            </td>
-                            <td>
-                                <div class="perm-grid">
-                                    <div class="perm-switch-wrapper">
-                                        <div class="perm-switch-label">Travel</div>
-                                        <label class="premium-switch">
-                                            <input class="agent-perm-toggle" data-file="tokyo_trip_itinerary.pdf" data-agent="travel" checked="" type="checkbox"/>
-                                            <span class="switch-slider"></span>
-                                        </label>
-                                    </div>
-                                    <div class="perm-switch-wrapper">
-                                        <div class="perm-switch-label">Finance</div>
-                                        <label class="premium-switch">
-                                            <input class="agent-perm-toggle" data-file="tokyo_trip_itinerary.pdf" data-agent="finance" type="checkbox"/>
-                                            <span class="switch-slider"></span>
-                                        </label>
-                                    </div>
-                                    <div class="perm-switch-wrapper">
-                                        <div class="perm-switch-label">Food</div>
-                                        <label class="premium-switch">
-                                            <input class="agent-perm-toggle" data-file="tokyo_trip_itinerary.pdf" data-agent="food" type="checkbox"/>
-                                            <span class="switch-slider"></span>
-                                        </label>
-                                    </div>
-                                </div>
-                            </td>
-                            <td style="text-align: right;">
-                                <button class="file-delete-btn" data-row="row-file-2" data-filename="tokyo_trip_itinerary.pdf">
-                                    <i class="fa-solid fa-trash-can"></i>
-                                </button>
-                            </td>
-                        </tr>
-                        <tr id="row-file-3">
-                            <td>
-                                <div class="file-name-cell">
-                                    <i class="fa-solid fa-file-code file-icon" style="color: #f5b041;"></i>
-                                    <span>dietary_preferences_v2.json</span>
-                                </div>
-                            </td>
-                            <td>12 KB</td>
-                            <td>
-                                <span class="file-status-badge decrypted">Decrypted</span>
-                            </td>
-                            <td>
-                                <div class="perm-grid">
-                                    <div class="perm-switch-wrapper">
-                                        <div class="perm-switch-label">Travel</div>
-                                        <label class="premium-switch">
-                                            <input class="agent-perm-toggle" data-file="dietary_preferences_v2.json" data-agent="travel" type="checkbox"/>
-                                            <span class="switch-slider"></span>
-                                        </label>
-                                    </div>
-                                    <div class="perm-switch-wrapper">
-                                        <div class="perm-switch-label">Finance</div>
-                                        <label class="premium-switch">
-                                            <input class="agent-perm-toggle" data-file="dietary_preferences_v2.json" data-agent="finance" type="checkbox"/>
-                                            <span class="switch-slider"></span>
-                                        </label>
-                                    </div>
-                                    <div class="perm-switch-wrapper">
-                                        <div class="perm-switch-label">Food</div>
-                                        <label class="premium-switch">
-                                            <input class="agent-perm-toggle" data-file="dietary_preferences_v2.json" data-agent="food" checked="" type="checkbox"/>
-                                            <span class="switch-slider"></span>
-                                        </label>
-                                    </div>
-                                </div>
-                            </td>
-                            <td style="text-align: right;">
-                                <button class="file-delete-btn" data-row="row-file-3" data-filename="dietary_preferences_v2.json">
-                                    <i class="fa-solid fa-trash-can"></i>
-                                </button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                </div>
-            </div>
-
-            <!-- Section 2: Connected Social Accounts & Websites -->
-            <div class="profile-section-card">
-                <h2>
-                    <i class="fa-solid fa-network-wired"></i>
-                    <span>Connected Social Networks &amp; Websites</span>
-                </h2>
-                <p class="card-subtitle">Authorize Hero Agent swarms to read profile context, social feeds, and pull secure API information from external accounts.</p>
-
-                <div class="services-grid">
-                    <!-- Service 1: GitHub -->
-                    <div class="service-card connected" id="card-service-github">
-                        <div class="service-card-header">
-                            <div class="service-icon-label">
-                                <i class="fa-brands fa-github"></i>
-                                <span>GitHub</span>
-                            </div>
-                            <div class="service-status-dot-indicator"></div>
-                        </div>
-                        <div class="service-card-body">
+<div class="page-header">
+<h1 class="page-title">User Profile Hub 👤</h1>
+<p class="page-subtitle">Manage developer accounts, configure connected swarm services, and audit secure sandbox storage permissions.</p>
+</div>
+<div class="profile-layout">
+<!-- Sidebar Column: Profile details & keys -->
+<div class="profile-sidebar-card">
+<div class="profile-avatar-wrapper" id="profile-avatar-trigger">
+<div class="profile-avatar">
+<i class="fa-solid fa-user-astronaut"></i>
+</div>
+<div class="profile-avatar-upload-icon">
+<i class="fa-solid fa-camera"></i>
+</div>
+</div>
+<div style="margin-top: 10px;">
+<h3 class="profile-username">Engin Can Erköseoglu</h3>
+<span class="profile-role-badge">Lead System Architect</span>
+</div>
+<div class="profile-meta-list">
+<div class="profile-meta-item">
+<span>Email:</span>
+<span>engin@erklabs.com</span>
+</div>
+<div class="profile-meta-item">
+<span>Fingerprint ID:</span>
+<span style="font-family: monospace;">7F8A-9C2D-1E0F</span>
+</div>
+<div class="profile-meta-item">
+<span>Bridge Auth:</span>
+<span style="color: var(--green-neon);"><i class="fa-solid fa-circle-check"></i> Enabled</span>
+</div>
+<div class="profile-meta-item">
+<span>Active Storage:</span>
+<span id="vault-active-storage-size">2.1 MB</span>
+</div>
+</div>
+<!-- API Keys Subsection -->
+<div class="api-keys-container">
+<h4 style="font-size: 11px; text-transform: uppercase; color: white; letter-spacing: 1px; font-weight: 700; text-align: left; margin-bottom: 8px;">Swarm API Keys</h4>
+<div class="api-key-row">
+<div class="api-key-label">OpenAI Key</div>
+<div class="api-key-input-wrapper">
+<input class="api-key-input" id="key-openai" readonly="" type="password" value="sk-proj-4a8f9c2d1e0f3b4a5c6d7e8f9a0b1c2d3e4f5a6b7c8"/>
+<button class="api-key-btn toggle-key" data-target="key-openai">
+<i class="fa-solid fa-eye"></i>
+</button>
+<button class="api-key-btn copy-key" data-target="key-openai">
+<i class="fa-solid fa-copy"></i>
+</button>
+</div>
+</div>
+<div class="api-key-row">
+<div class="api-key-label">Anthropic Key</div>
+<div class="api-key-input-wrapper">
+<input class="api-key-input" id="key-anthropic" readonly="" type="password" value="sk-ant-9w1a8s7d6f5g4h3j2k1l0p9o8i7u6y5t4r3e2w1"/>
+<button class="api-key-btn toggle-key" data-target="key-anthropic">
+<i class="fa-solid fa-eye"></i>
+</button>
+<button class="api-key-btn copy-key" data-target="key-anthropic">
+<i class="fa-solid fa-copy"></i>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Main Column: Secure Storage & Connected Social Media -->
+<div>
+<!-- Section 1: File Storage Vault -->
+<div class="profile-section-card">
+<h2>
+<i class="fa-solid fa-folder-open"></i>
+<span>Secure Context Files Vault</span>
+</h2>
+<p class="card-subtitle">Upload context files (PDF, XLSX, JSON) directly into a secure encrypted localized VM cache. Toggling keys dictates which agent swarms have read/write access.</p>
+<!-- Drag and Drop Upload Zone -->
+<div class="profile-upload-zone" id="profile-dropzone">
+<i class="fa-solid fa-cloud-arrow-up"></i>
+<div class="profile-upload-text">Drag &amp; drop files here or <span style="color: var(--purple-light); text-decoration: underline;">browse folders</span></div>
+<div class="profile-upload-subtext">Supports PDF, CSV, XLSX, DOCX, JSON (Max 50MB)</div>
+<div class="profile-upload-progress-bar" id="profile-upload-progress"></div>
+<input accept=".pdf,.csv,.xlsx,.docx,.json,.txt" id="profile-file-input" style="display: none;" type="file"/>
+</div>
+<!-- Live File Table -->
+<div class="table-responsive-wrapper">
+<table class="file-vault-table">
+<thead>
+<tr>
+<th>File Name</th>
+<th>Size</th>
+<th>Status</th>
+<th>Agent Access Controls</th>
+<th style="text-align: right;">Action</th>
+</tr>
+</thead>
+<tbody id="file-vault-rows">
+<tr id="row-file-1">
+<td>
+<div class="file-name-cell">
+<i class="fa-solid fa-file-excel file-icon" style="color: #107c41;"></i>
+<span>financial_statement_q1.xlsx</span>
+</div>
+</td>
+<td>1.2 MB</td>
+<td>
+<span class="file-status-badge encrypted">Encrypted</span>
+</td>
+<td>
+<div class="perm-grid">
+<div class="perm-switch-wrapper">
+<div class="perm-switch-label">Travel</div>
+<label class="premium-switch">
+<input class="agent-perm-toggle" data-agent="travel" data-file="financial_statement_q1.xlsx" type="checkbox"/>
+<span class="switch-slider"></span>
+</label>
+</div>
+<div class="perm-switch-wrapper">
+<div class="perm-switch-label">Finance</div>
+<label class="premium-switch">
+<input checked="" class="agent-perm-toggle" data-agent="finance" data-file="financial_statement_q1.xlsx" type="checkbox"/>
+<span class="switch-slider"></span>
+</label>
+</div>
+<div class="perm-switch-wrapper">
+<div class="perm-switch-label">Food</div>
+<label class="premium-switch">
+<input class="agent-perm-toggle" data-agent="food" data-file="financial_statement_q1.xlsx" type="checkbox"/>
+<span class="switch-slider"></span>
+</label>
+</div>
+</div>
+</td>
+<td style="text-align: right;">
+<button class="file-delete-btn" data-filename="financial_statement_q1.xlsx" data-row="row-file-1">
+<i class="fa-solid fa-trash-can"></i>
+</button>
+</td>
+</tr>
+<tr id="row-file-2">
+<td>
+<div class="file-name-cell">
+<i class="fa-solid fa-file-pdf file-icon" style="color: #f40f02;"></i>
+<span>tokyo_trip_itinerary.pdf</span>
+</div>
+</td>
+<td>840 KB</td>
+<td>
+<span class="file-status-badge decrypted">Decrypted</span>
+</td>
+<td>
+<div class="perm-grid">
+<div class="perm-switch-wrapper">
+<div class="perm-switch-label">Travel</div>
+<label class="premium-switch">
+<input checked="" class="agent-perm-toggle" data-agent="travel" data-file="tokyo_trip_itinerary.pdf" type="checkbox"/>
+<span class="switch-slider"></span>
+</label>
+</div>
+<div class="perm-switch-wrapper">
+<div class="perm-switch-label">Finance</div>
+<label class="premium-switch">
+<input class="agent-perm-toggle" data-agent="finance" data-file="tokyo_trip_itinerary.pdf" type="checkbox"/>
+<span class="switch-slider"></span>
+</label>
+</div>
+<div class="perm-switch-wrapper">
+<div class="perm-switch-label">Food</div>
+<label class="premium-switch">
+<input class="agent-perm-toggle" data-agent="food" data-file="tokyo_trip_itinerary.pdf" type="checkbox"/>
+<span class="switch-slider"></span>
+</label>
+</div>
+</div>
+</td>
+<td style="text-align: right;">
+<button class="file-delete-btn" data-filename="tokyo_trip_itinerary.pdf" data-row="row-file-2">
+<i class="fa-solid fa-trash-can"></i>
+</button>
+</td>
+</tr>
+<tr id="row-file-3">
+<td>
+<div class="file-name-cell">
+<i class="fa-solid fa-file-code file-icon" style="color: #f5b041;"></i>
+<span>dietary_preferences_v2.json</span>
+</div>
+</td>
+<td>12 KB</td>
+<td>
+<span class="file-status-badge decrypted">Decrypted</span>
+</td>
+<td>
+<div class="perm-grid">
+<div class="perm-switch-wrapper">
+<div class="perm-switch-label">Travel</div>
+<label class="premium-switch">
+<input class="agent-perm-toggle" data-agent="travel" data-file="dietary_preferences_v2.json" type="checkbox"/>
+<span class="switch-slider"></span>
+</label>
+</div>
+<div class="perm-switch-wrapper">
+<div class="perm-switch-label">Finance</div>
+<label class="premium-switch">
+<input class="agent-perm-toggle" data-agent="finance" data-file="dietary_preferences_v2.json" type="checkbox"/>
+<span class="switch-slider"></span>
+</label>
+</div>
+<div class="perm-switch-wrapper">
+<div class="perm-switch-label">Food</div>
+<label class="premium-switch">
+<input checked="" class="agent-perm-toggle" data-agent="food" data-file="dietary_preferences_v2.json" type="checkbox"/>
+<span class="switch-slider"></span>
+</label>
+</div>
+</div>
+</td>
+<td style="text-align: right;">
+<button class="file-delete-btn" data-filename="dietary_preferences_v2.json" data-row="row-file-3">
+<i class="fa-solid fa-trash-can"></i>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Section 2: Connected Social Accounts & Websites -->
+<div class="profile-section-card">
+<h2>
+<i class="fa-solid fa-network-wired"></i>
+<span>Connected Social Networks &amp; Websites</span>
+</h2>
+<p class="card-subtitle">Authorize Hero Agent swarms to read profile context, social feeds, and pull secure API information from external accounts.</p>
+<div class="services-grid">
+<!-- Service 1: GitHub -->
+<div class="service-card connected" id="card-service-github">
+<div class="service-card-header">
+<div class="service-icon-label">
+<i class="fa-brands fa-github"></i>
+<span>GitHub</span>
+</div>
+<div class="service-status-dot-indicator"></div>
+</div>
+<div class="service-card-body">
                             Status: <span>Connected</span><br/>
                             Identity: <span>@engincan</span><br/>
                             Access: <span>Read / Write</span>
-                        </div>
-                        <button class="service-connect-btn" data-service="github" id="btn-service-github">Disconnect</button>
-                    </div>
-
-                    <!-- Service 2: LinkedIn -->
-                    <div class="service-card connected" id="card-service-linkedin">
-                        <div class="service-card-header">
-                            <div class="service-icon-label">
-                                <i class="fa-brands fa-linkedin"></i>
-                                <span>LinkedIn</span>
-                            </div>
-                            <div class="service-status-dot-indicator"></div>
-                        </div>
-                        <div class="service-card-body">
+</div>
+<button class="service-connect-btn" data-service="github" id="btn-service-github">Disconnect</button>
+</div>
+<!-- Service 2: LinkedIn -->
+<div class="service-card connected" id="card-service-linkedin">
+<div class="service-card-header">
+<div class="service-icon-label">
+<i class="fa-brands fa-linkedin"></i>
+<span>LinkedIn</span>
+</div>
+<div class="service-status-dot-indicator"></div>
+</div>
+<div class="service-card-body">
                             Status: <span>Connected</span><br/>
                             Identity: <span>Engin Can Erköseoglu</span><br/>
                             Access: <span>Read Profile</span>
-                        </div>
-                        <button class="service-connect-btn" data-service="linkedin" id="btn-service-linkedin">Disconnect</button>
-                    </div>
-
-                    <!-- Service 3: X / Twitter -->
-                    <div class="service-card" id="card-service-twitter">
-                        <div class="service-card-header">
-                            <div class="service-icon-label">
-                                <i class="fa-brands fa-twitter"></i>
-                                <span>X / Twitter</span>
-                            </div>
-                            <div class="service-status-dot-indicator"></div>
-                        </div>
-                        <div class="service-card-body">
+</div>
+<button class="service-connect-btn" data-service="linkedin" id="btn-service-linkedin">Disconnect</button>
+</div>
+<!-- Service 3: X / Twitter -->
+<div class="service-card" id="card-service-twitter">
+<div class="service-card-header">
+<div class="service-icon-label">
+<i class="fa-brands fa-twitter"></i>
+<span>X / Twitter</span>
+</div>
+<div class="service-status-dot-indicator"></div>
+</div>
+<div class="service-card-body">
                             Status: <span>Not Connected</span><br/>
                             Identity: <span>--</span><br/>
                             Access: <span>No Access</span>
-                        </div>
-                        <button class="service-connect-btn" data-service="twitter" id="btn-service-twitter">Connect</button>
-                    </div>
-
-                    <!-- Service 4: Google Workspace -->
-                    <div class="service-card connected" id="card-service-google">
-                        <div class="service-card-header">
-                            <div class="service-icon-label">
-                                <i class="fa-brands fa-google"></i>
-                                <span>Google API</span>
-                            </div>
-                            <div class="service-status-dot-indicator"></div>
-                        </div>
-                        <div class="service-card-body">
+</div>
+<button class="service-connect-btn" data-service="twitter" id="btn-service-twitter">Connect</button>
+</div>
+<!-- Service 4: Google Workspace -->
+<div class="service-card connected" id="card-service-google">
+<div class="service-card-header">
+<div class="service-icon-label">
+<i class="fa-brands fa-google"></i>
+<span>Google API</span>
+</div>
+<div class="service-status-dot-indicator"></div>
+</div>
+<div class="service-card-body">
                             Status: <span>Connected</span><br/>
                             Identity: <span>engin.erkoseoglu@gmail.com</span><br/>
                             Access: <span>Drive, Calendar</span>
-                        </div>
-                        <button class="service-connect-btn" data-service="google" id="btn-service-google">Disconnect</button>
-                    </div>
-
-                    <!-- Service 5: Personal Website -->
-                    <div class="service-card connected" id="card-service-globe">
-                        <div class="service-card-header">
-                            <div class="service-icon-label">
-                                <i class="fa-solid fa-globe"></i>
-                                <span>Personal Site</span>
-                            </div>
-                            <div class="service-status-dot-indicator"></div>
-                        </div>
-                        <div class="service-card-body">
+</div>
+<button class="service-connect-btn" data-service="google" id="btn-service-google">Disconnect</button>
+</div>
+<!-- Service 5: Personal Website -->
+<div class="service-card connected" id="card-service-globe">
+<div class="service-card-header">
+<div class="service-icon-label">
+<i class="fa-solid fa-globe"></i>
+<span>Personal Site</span>
+</div>
+<div class="service-status-dot-indicator"></div>
+</div>
+<div class="service-card-body">
                             Status: <span>Connected</span><br/>
                             Identity: <span>erklabs.com</span><br/>
                             Access: <span>Web scraper allowed</span>
-                        </div>
-                        <button class="service-connect-btn" data-service="globe" id="btn-service-globe">Disconnect</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 </div>
-
+<button class="service-connect-btn" data-service="globe" id="btn-service-globe">Disconnect</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 <!-- Dynamic Toast element -->
 <div class="profile-toast" id="profile-toast-box">
-    <i class="fa-solid fa-circle-check" style="color: var(--green-neon); font-size: 18px;"></i>
-    <span id="profile-toast-msg">Settings saved successfully.</span>
+<i class="fa-solid fa-circle-check" style="color: var(--green-neon); font-size: 18px;"></i>
+<span id="profile-toast-msg">Settings saved successfully.</span>
 </div>
-
 </main>
 <!-- SANDBOX EXECUTION FULLSCREEN WORKSPACE -->
 <div id="sandbox-workspace">
@@ -5289,7 +5273,7 @@
                         results.style.display = 'block';
                         const f1 = document.getElementById('flight-1');
                         f1.classList.add('selected');
-                        addLog('system', '[Swarm 1: Travel] Identifed Lufthansa direct for €920. Commencing cart placement...');
+                        addLog('system', '[Swarm 1: Travel] Identified Lufthansa direct for €920. Commencing cart placement...');
                         
                         animateCursor('#flight-1 .book-btn', 0, 0, () => {
                             addLog('success', '[Swarm 1: Travel] Flight ticket successfully reserved (Ticket ID: LH-9812).');

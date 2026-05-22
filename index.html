@@ -1,20 +1,15 @@
 <!DOCTYPE html>
 
 <html lang="en">
-
 <head>
-  <meta charset="utf-8" />
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-  <title>The AI Store</title>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Outfit:wght@300;400;500;600;700;800;900&amp;display=swap"
-    rel="preconnect" />
-  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Outfit:wght@300;400;500;600;700;800;900&amp;display=swap"
-    rel="stylesheet" />
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet" />
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>The AI Store</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Outfit:wght@300;400;500;600;700;800;900&amp;display=swap" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Outfit:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+<style>
     * {
       box-sizing: border-box;
       margin: 0;
@@ -307,354 +302,299 @@
 
 
 
-    /* ─── REMIX STYLING INJECTION ─── */
-    :root,
-    :host {
-      --black: #000000;
-      --purple: #9333ea;
-      --purple-light: #c084fc;
-      --blue: #3b82f6;
-      --blue-light: #93c5fd;
-      --pink: #ec4899;
-      --pink-light: #f9a8d4;
-      --white: #ffffff;
-      --white-dim: rgba(255, 255, 255, 0.7);
-      --card-bg: rgba(20, 10, 32, 0.85);
-      --card-border: rgba(168, 85, 247, 0.25);
-    }
+    
+  
+  /* ─── REMIX STYLING INJECTION ─── */
+  :root, :host {
+    --black: #000000;
+    --purple: #9333ea;
+    --purple-light: #c084fc;
+    --blue: #3b82f6;
+    --blue-light: #93c5fd;
+    --pink: #ec4899;
+    --pink-light: #f9a8d4;
+    --white: #ffffff;
+    --white-dim: rgba(255,255,255,0.7);
+    --card-bg: rgba(20, 10, 32, 0.85);
+    --card-border: rgba(168, 85, 247, 0.25);
+  }
 
-    body {
-      background: var(--black) !important;
-      color: var(--white) !important;
-      font-family: 'Outfit', sans-serif !important;
-      overflow-x: hidden;
-    }
+  body {
+    background: var(--black) !important;
+    color: var(--white) !important;
+    font-family: 'Outfit', sans-serif !important;
+    overflow-x: hidden;
+  }
 
-    /* ─── NOISE OVERLAY ─── */
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E") !important;
-      opacity: 0.022;
-      pointer-events: none;
-      z-index: 1000;
-    }
+  /* ─── NOISE OVERLAY ─── */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E") !important;
+    opacity: 0.022; pointer-events: none; z-index: 1000;
+  }
 
-    /* ─── AMBIENT GLOWS (SINGLE RIGHT GLOW) ─── */
-    .hero-glow-purple {
-      position: absolute;
-      bottom: -100px;
-      right: -5%;
-      width: 60vw;
-      height: 60vw;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(147, 51, 234, 0.22) 0%, transparent 65%) !important;
-      filter: blur(50px);
-      pointer-events: none;
-      animation: glow-pulse 6s ease-in-out infinite alternate;
-      z-index: 2;
-    }
+  /* ─── AMBIENT GLOWS (SINGLE RIGHT GLOW) ─── */
+  .hero-glow-purple {
+    position: absolute; bottom: -100px; right: -5%;
+    width: 60vw; height: 60vw; border-radius: 50%;
+    background: radial-gradient(circle, rgba(147,51,234,0.22) 0%, transparent 65%) !important;
+    filter: blur(50px); pointer-events: none;
+    animation: glow-pulse 6s ease-in-out infinite alternate;
+    z-index: 2;
+  }
 
-    @keyframes glow-pulse {
-      from {
-        opacity: 0.8;
-        transform: scale(0.95);
-      }
+  @keyframes glow-pulse {
+    from { opacity: 0.8; transform: scale(0.95); }
+    to   { opacity: 1.0; transform: scale(1.05); }
+  }
 
-      to {
-        opacity: 1.0;
-        transform: scale(1.05);
-      }
-    }
+  /* ─── SINGLE FLOATING ORB (RIGHT) ─── */
+  .orb {
+    position: absolute;
+    border-radius: 50%;
+    background: conic-gradient(from 0deg, #c084fc, #818cf8, #38bdf8, #34d399, #f472b6, #c084fc) !important;
+    filter: blur(1px) saturate(1.4) !important;
+    animation: float 8s ease-in-out infinite;
+    opacity: 0.75 !important;
+    z-index: 2;
+    pointer-events: none !important;
+  }
 
-    /* ─── SINGLE FLOATING ORB (RIGHT) ─── */
-    .orb {
-      position: absolute;
-      border-radius: 50%;
-      background: conic-gradient(from 0deg, #c084fc, #818cf8, #38bdf8, #34d399, #f472b6, #c084fc) !important;
-      filter: blur(1px) saturate(1.4) !important;
-      animation: float 8s ease-in-out infinite;
-      opacity: 0.75 !important;
-      z-index: 2;
-      pointer-events: none !important;
-    }
+  .orb::after {
+    content: '';
+    position: absolute; inset: 5px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.6), rgba(0,0,0,0.3)) !important;
+  }
+  .orb-tr { top: 8%; right: 5%; width: 145px; height: 145px; animation-delay: 0s; }
 
-    .orb::after {
-      content: '';
-      position: absolute;
-      inset: 5px;
-      border-radius: 50%;
-      background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.6), rgba(0, 0, 0, 0.3)) !important;
-    }
+  @keyframes float {
+    0%,100% { transform: translateY(0px) rotate(0deg); }
+    33%      { transform: translateY(-18px) rotate(6deg); }
+    66%      { transform: translateY(10px) rotate(-4deg); }
+  }
 
-    .orb-tr {
-      top: 8%;
-      right: 5%;
-      width: 145px;
-      height: 145px;
-      animation-delay: 0s;
-    }
+  /* ─── SLIDE CONTAINER OVERRIDES ─── */
+  .slide-container {
+    background: #000000 !important;
+    border-radius: 20px !important;
+    border: 1px solid rgba(255,255,255,0.06) !important;
+    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.9), 0 0 60px rgba(147, 51, 234, 0.04) !important;
+  }
 
-    @keyframes float {
+  .grid-pattern {
+    background-image: 
+      linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px) !important;
+    background-size: 60px 60px !important;
+    z-index: 1 !important;
+    -webkit-mask-image: radial-gradient(ellipse 70% 80% at 50% 50%, black 50%, transparent 100%) !important;
+    mask-image: radial-gradient(ellipse 70% 80% at 50% 50%, black 50%, transparent 100%) !important;
+  }
 
-      0%,
-      100% {
-        transform: translateY(0px) rotate(0deg);
-      }
+  .content-wrapper {
+    z-index: 10 !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
 
-      33% {
-        transform: translateY(-18px) rotate(6deg);
-      }
+  /* ─── TYPOGRAPHY OVERRIDES ─── */
+  h1 {
+    font-family: 'Bebas Neue', sans-serif !important;
+    font-size: clamp(80px, 12vw, 110px) !important;
+    font-weight: 400 !important;
+    letter-spacing: 2px !important;
+    line-height: 0.95 !important;
+    margin-bottom: 25px !important;
+    background: linear-gradient(170deg, #ffffff 0%, #e8d5ff 50%, #c084fc 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+  }
 
-      66% {
-        transform: translateY(10px) rotate(-4deg);
-      }
-    }
+  h2 {
+    font-family: 'Bebas Neue', sans-serif !important;
+    font-size: 52px !important;
+    font-weight: 400 !important;
+    letter-spacing: 1px !important;
+    line-height: 1 !important;
+    margin-bottom: 10px !important;
+  }
 
-    /* ─── SLIDE CONTAINER OVERRIDES ─── */
-    .slide-container {
-      background: #000000 !important;
-      border-radius: 20px !important;
-      border: 1px solid rgba(255, 255, 255, 0.06) !important;
-      box-shadow: 0 40px 100px rgba(0, 0, 0, 0.9), 0 0 60px rgba(147, 51, 234, 0.04) !important;
-    }
+  h3 {
+    font-family: 'Bebas Neue', sans-serif !important;
+    font-size: 26px !important;
+    font-weight: 400 !important;
+    letter-spacing: 1.5px !important;
+  }
 
-    .grid-pattern {
-      background-image:
-        linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px) !important;
-      background-size: 60px 60px !important;
-      z-index: 1 !important;
-      -webkit-mask-image: radial-gradient(ellipse 70% 80% at 50% 50%, black 50%, transparent 100%) !important;
-      mask-image: radial-gradient(ellipse 70% 80% at 50% 50%, black 50%, transparent 100%) !important;
-    }
+  .subtitle {
+    font-family: 'Outfit', sans-serif !important;
+    font-weight: 300 !important;
+    font-size: 22px !important;
+    color: var(--white-dim) !important;
+  }
 
-    .content-wrapper {
-      z-index: 10 !important;
-      opacity: 1 !important;
-      transform: none !important;
-    }
+  /* ─── PREMIUM rounded UI widgets ─── */
+  .innovation-badge, .page-badge, .date-badge {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    background: rgba(255, 255, 255, 0.04) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    padding: 8px 20px !important;
+    border-radius: 100px !important;
+    color: #ffffff !important;
+    font-family: 'Outfit', sans-serif !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    letter-spacing: 1.5px !important;
+    text-transform: uppercase !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    transition: all 0.3s ease !important;
+  }
+  
+  .innovation-badge:hover, .page-badge:hover, .date-badge:hover {
+    background: rgba(255, 255, 255, 0.08) !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
+    box-shadow: 0 0 20px rgba(255,255,255,0.05) !important;
+  }
 
-    /* ─── TYPOGRAPHY OVERRIDES ─── */
-    h1 {
-      font-family: 'Bebas Neue', sans-serif !important;
-      font-size: clamp(80px, 12vw, 110px) !important;
-      font-weight: 400 !important;
-      letter-spacing: 2px !important;
-      line-height: 0.95 !important;
-      margin-bottom: 25px !important;
-      background: linear-gradient(170deg, #ffffff 0%, #e8d5ff 50%, #c084fc 100%) !important;
-      -webkit-background-clip: text !important;
-      -webkit-text-fill-color: transparent !important;
-      background-clip: text !important;
-    }
+  .decorative-line {
+    background: linear-gradient(90deg, var(--purple-light), var(--pink-light)) !important;
+    border-radius: 100px !important;
+    height: 3px !important;
+  }
 
-    h2 {
-      font-family: 'Bebas Neue', sans-serif !important;
-      font-size: 52px !important;
-      font-weight: 400 !important;
-      letter-spacing: 1px !important;
-      line-height: 1 !important;
-      margin-bottom: 10px !important;
-    }
+  /* rounded glassmorphism cards */
+  :where(.side-card, .agent-card, .trait-card, .pricing-card, .info-card, .audience-card, .metric-card, .compliance-card, .growth-card, .tactic-card, .team-card, .cta-card, .tech-card, .highlight-card, .economics-card) {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 16px !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1) !important;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15) !important;
+  }
+  
+  .side-card:hover, .agent-card:hover, .trait-card:hover, .pricing-card:hover, .info-card:hover, .team-card:hover, .cta-card:hover, .tech-card:hover, .highlight-card:hover, .economics-card:hover {
+    border-color: rgba(147, 51, 234, 0.4) !important;
+    transform: translateY(-4px) !important;
+    box-shadow: 0 15px 35px rgba(147, 51, 234, 0.18), 0 0 20px rgba(147, 51, 234, 0.05) !important;
+  }
 
-    h3 {
-      font-family: 'Bebas Neue', sans-serif !important;
-      font-size: 26px !important;
-      font-weight: 400 !important;
-      letter-spacing: 1.5px !important;
-    }
+  .side-card::before, .agent-card::before {
+    display: none !important; /* Hide blocky colored top-borders */
+  }
 
-    .subtitle {
-      font-family: 'Outfit', sans-serif !important;
-      font-weight: 300 !important;
-      font-size: 22px !important;
-      color: var(--white-dim) !important;
-    }
+  .featured-badge, .featured-tag, .popular-badge, .agent-badge {
+    background: linear-gradient(135deg, var(--pink), var(--purple)) !important;
+    border-radius: 100px !important;
+    padding: 4px 12px !important;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    color: white !important;
+    letter-spacing: 1px !important;
+    text-transform: uppercase !important;
+    border: none !important;
+  }
 
-    /* ─── PREMIUM rounded UI widgets ─── */
-    .innovation-badge,
-    .page-badge,
-    .date-badge {
-      display: inline-flex !important;
-      align-items: center !important;
-      gap: 10px !important;
-      background: rgba(255, 255, 255, 0.04) !important;
-      border: 1px solid rgba(255, 255, 255, 0.1) !important;
-      padding: 8px 20px !important;
-      border-radius: 100px !important;
-      color: #ffffff !important;
-      font-family: 'Outfit', sans-serif !important;
-      font-size: 13px !important;
-      font-weight: 600 !important;
-      letter-spacing: 1.5px !important;
-      text-transform: uppercase !important;
-      backdrop-filter: blur(10px) !important;
-      -webkit-backdrop-filter: blur(10px) !important;
-      transition: all 0.3s ease !important;
-    }
+  .launch-demo-btn, .btn-primary, .btn-submit {
+    background: linear-gradient(135deg, var(--purple), var(--pink)) !important;
+    border-radius: 100px !important;
+    border: 1px solid rgba(255,255,255,0.1) !important;
+    color: white !important;
+    font-weight: 700 !important;
+    font-family: 'Outfit', sans-serif !important;
+    box-shadow: 0 0 30px rgba(147, 51, 234, 0.35) !important;
+    transition: all 0.3s ease !important;
+  }
+  
+  .launch-demo-btn:hover, .btn-primary:hover {
+    box-shadow: 0 0 45px rgba(147, 51, 234, 0.6), 0 0 70px rgba(236,72,153,0.3) !important;
+    transform: translateY(-2px) !important;
+    border-color: rgba(255,255,255,0.2) !important;
+  }
 
-    .innovation-badge:hover,
-    .page-badge:hover,
-    .date-badge:hover {
-      background: rgba(255, 255, 255, 0.08) !important;
-      border-color: rgba(255, 255, 255, 0.2) !important;
-      box-shadow: 0 0 20px rgba(255, 255, 255, 0.05) !important;
-    }
+  .btn-ghost {
+    border-radius: 100px !important;
+    border: 1px solid rgba(255,255,255,0.2) !important;
+    font-family: 'Outfit', sans-serif !important;
+    transition: all 0.3s ease !important;
+  }
+  .btn-ghost:hover {
+    border-color: rgba(255,255,255,0.5) !important;
+    background: rgba(255,255,255,0.05) !important;
+  }
 
-    .decorative-line {
-      background: linear-gradient(90deg, var(--purple-light), var(--pink-light)) !important;
-      border-radius: 100px !important;
-      height: 3px !important;
-    }
+  /* Specific visual improvements for lists and connectors */
+  .arrow-connector {
+    color: var(--purple-light) !important;
+    text-shadow: 0 0 15px rgba(168,85,247,0.4);
+  }
+  
+  .result-box {
+    border-radius: 12px !important;
+  }
 
-    /* rounded glassmorphism cards */
-    :where(.side-card, .agent-card, .trait-card, .pricing-card, .info-card, .audience-card, .metric-card, .compliance-card, .growth-card, .tactic-card, .team-card, .cta-card, .tech-card, .highlight-card, .economics-card) {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 16px !important;
-      backdrop-filter: blur(10px) !important;
-      -webkit-backdrop-filter: blur(10px) !important;
-      transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1) !important;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15) !important;
-    }
+  .feature-tag {
+    border-radius: 100px !important;
+    background: rgba(255, 255, 255, 0.04) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    font-family: 'Outfit', sans-serif !important;
+  }
+  
+  .user-image {
+    border-radius: 16px !important;
+    border: 1px solid rgba(255,255,255,0.1) !important;
+  }
 
-    .side-card:hover,
-    .agent-card:hover,
-    .trait-card:hover,
-    .pricing-card:hover,
-    .info-card:hover,
-    .team-card:hover,
-    .cta-card:hover,
-    .tech-card:hover,
-    .highlight-card:hover,
-    .economics-card:hover {
-      border-color: rgba(147, 51, 234, 0.4) !important;
-      transform: translateY(-4px) !important;
-      box-shadow: 0 15px 35px rgba(147, 51, 234, 0.18), 0 0 20px rgba(147, 51, 234, 0.05) !important;
-    }
-
-    .side-card::before,
-    .agent-card::before {
-      display: none !important;
-      /* Hide blocky colored top-borders */
-    }
-
-    .featured-badge,
-    .featured-tag,
-    .popular-badge,
-    .agent-badge {
-      background: linear-gradient(135deg, var(--pink), var(--purple)) !important;
-      border-radius: 100px !important;
-      padding: 4px 12px !important;
-      font-size: 11px !important;
-      font-weight: 700 !important;
-      color: white !important;
-      letter-spacing: 1px !important;
-      text-transform: uppercase !important;
-      border: none !important;
-    }
-
-    .launch-demo-btn,
-    .btn-primary,
-    .btn-submit {
-      background: linear-gradient(135deg, var(--purple), var(--pink)) !important;
-      border-radius: 100px !important;
-      border: 1px solid rgba(255, 255, 255, 0.1) !important;
-      color: white !important;
-      font-weight: 700 !important;
-      font-family: 'Outfit', sans-serif !important;
-      box-shadow: 0 0 30px rgba(147, 51, 234, 0.35) !important;
-      transition: all 0.3s ease !important;
-    }
-
-    .launch-demo-btn:hover,
-    .btn-primary:hover {
-      box-shadow: 0 0 45px rgba(147, 51, 234, 0.6), 0 0 70px rgba(236, 72, 153, 0.3) !important;
-      transform: translateY(-2px) !important;
-      border-color: rgba(255, 255, 255, 0.2) !important;
-    }
-
-    .btn-ghost {
-      border-radius: 100px !important;
-      border: 1px solid rgba(255, 255, 255, 0.2) !important;
-      font-family: 'Outfit', sans-serif !important;
-      transition: all 0.3s ease !important;
-    }
-
-    .btn-ghost:hover {
-      border-color: rgba(255, 255, 255, 0.5) !important;
-      background: rgba(255, 255, 255, 0.05) !important;
-    }
-
-    /* Specific visual improvements for lists and connectors */
-    .arrow-connector {
-      color: var(--purple-light) !important;
-      text-shadow: 0 0 15px rgba(168, 85, 247, 0.4);
-    }
-
-    .result-box {
-      border-radius: 12px !important;
-    }
-
-    .feature-tag {
-      border-radius: 100px !important;
-      background: rgba(255, 255, 255, 0.04) !important;
-      border: 1px solid rgba(255, 255, 255, 0.08) !important;
-      font-family: 'Outfit', sans-serif !important;
-    }
-
-    .user-image {
-      border-radius: 16px !important;
-      border: 1px solid rgba(255, 255, 255, 0.1) !important;
-    }
-
-    /* Screen overrides for fullscreen deck transition */
-    .slide-nav-overlay {
-      background: rgba(0, 0, 0, 0.65) !important;
-      border: 1px solid rgba(255, 255, 255, 0.1) !important;
-      border-radius: 100px !important;
-      backdrop-filter: blur(15px) !important;
-      -webkit-backdrop-filter: blur(15px) !important;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
-    }
-  </style>
+  /* Screen overrides for fullscreen deck transition */
+  .slide-nav-overlay {
+    background: rgba(0, 0, 0, 0.65) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 100px !important;
+    backdrop-filter: blur(15px) !important;
+    -webkit-backdrop-filter: blur(15px) !important;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5) !important;
+  }
+</style>
 </head>
-
 <body>
-  <div class="slide-container">
-    <div class="grid-pattern"></div>
-    <div class="hero-glow-purple"></div>
-    <div class="orb orb-tr"></div>
+<div class="slide-container">
+<div class="grid-pattern"></div>
+<div class="hero-glow-purple"></div>
+<div class="orb orb-tr"></div>
 
 
 
-    <!-- Corner accents -->
-    <div class="corner-accent top-left"></div>
-    <div class="corner-accent top-right"></div>
-    <div class="corner-accent bottom-left"></div>
-    <div class="corner-accent bottom-right"></div>
-    <!-- Main content -->
-    <div class="content-wrapper">
-      <div class="innovation-badge">
-        <i class="fa-solid fa-flask"></i>
-        <span>Innovation Lab Studio | Uni Li</span>
-      </div>
-      <div class="decorative-line"></div>
-      <h1>The AI <span class="gradient-text">Store 🛒</span></h1>
-      <p class="subtitle">
-        Bridging the gap to <span class="highlight">Autonomous Utility.</span><br />
+<!-- Corner accents -->
+<div class="corner-accent top-left"></div>
+<div class="corner-accent top-right"></div>
+<div class="corner-accent bottom-left"></div>
+<div class="corner-accent bottom-right"></div>
+<!-- Main content -->
+<div class="content-wrapper">
+<div class="innovation-badge">
+<i class="fa-solid fa-flask"></i>
+<span>Innovation Lab Studio | Uni Li</span>
+</div>
+<div class="decorative-line"></div>
+<h1>The AI <span class="gradient-text">Store 🛒</span></h1>
+<p class="subtitle">
+        Bridging the gap to <span class="highlight">Autonomous Utility.</span><br/>
         Zero-setup execution for everyone.
       </p>
-      <div class="date-badge">
-        <i class="fa-regular fa-calendar"></i>
-        <span>MAY 2026</span>
-      </div>
-    </div>
-  </div>
-  <!-- Premium Interactive Navigation Overlay -->
-  <script>
+<div class="date-badge">
+<i class="fa-regular fa-calendar"></i>
+<span>MAY 2026</span>
+</div>
+</div>
+</div>
+<!-- Premium Interactive Navigation Overlay -->
+<script>
     const init = () => {
       const TOTAL_SLIDES = 10;
       const currentPath = window.location.pathname;
@@ -753,5 +693,4 @@
       init();
     }</script>
 </body>
-
 </html>

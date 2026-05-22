@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>The AI Store - Go-To-Market Roadmap</title>
+<title>The AI Store</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Outfit:wght@300;400;500;600;700;800;900&amp;display=swap" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Outfit:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
@@ -33,9 +33,11 @@
             position: relative;
             overflow: hidden;
             background: linear-gradient(135deg, #0a0515 0%, #130922 50%, #06020a 100%);
+            border-radius: 0;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
         }
 
+        /* Background pattern */
         .grid-pattern {
             position: absolute;
             top: 0;
@@ -47,61 +49,62 @@
             z-index: 1;
         }
 
-        .corner-accent {
-            position: absolute;
-            width: 15px;
-            height: 15px;
-            border: 2px solid rgba(168, 85, 247, 0.3);
-            z-index: 2;
-        }
-        .top-left { top: 30px; left: 30px; border-right: none; border-bottom: none; }
-        .top-right { top: 30px; right: 30px; border-left: none; border-bottom: none; }
-        .bottom-left { bottom: 30px; left: 30px; border-right: none; border-top: none; }
-        .bottom-right { bottom: 30px; right: 30px; border-left: none; border-top: none; }
-
+        /* Content wrapper */
         .content-wrapper {
             position: relative;
             z-index: 10;
             height: 100%;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            padding: 45px 50px;
-            box-sizing: border-box;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 50px 70px;
         }
 
-        .content-wrapper.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .header {
-            text-align: left;
-            margin-bottom: 20px;
-        }
-
-        .page-badge {
-            display: inline-block;
-            background: rgba(168, 85, 247, 0.1);
-            border: 1px solid rgba(168, 85, 247, 0.3);
+        /* Badge */
+        .innovation-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(168, 85, 247, 0.08);
+            border: 1px solid rgba(168, 85, 247, 0.25);
+            padding: 12px 28px;
+            border-radius: 0;
             color: #d8b4fe;
-            padding: 6px 14px;
-            font-size: 11px;
+            font-size: 16px;
             font-weight: 600;
-            letter-spacing: 1.5px;
+            letter-spacing: 2px;
+            margin-bottom: 35px;
             text-transform: uppercase;
-            margin-bottom: 8px;
+            transition: all 0.3s ease;
         }
 
-        h2 {
-            font-size: 34px;
+        .innovation-badge:hover {
+            background: rgba(168, 85, 247, 0.15);
+            border-color: rgba(168, 85, 247, 0.4);
+        }
+
+        .innovation-badge i {
+            font-size: 16px;
+        }
+
+        /* Decorative line */
+        .decorative-line {
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, #a855f7, #f472b6);
+            margin: 0 auto 35px;
+        }
+
+        /* Main title */
+        h1 {
+            font-size: 72px;
             font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 30px;
             color: #ffffff;
-            letter-spacing: -0.5px;
-            line-height: 1.2;
+            letter-spacing: -1px;
         }
 
         .gradient-text {
@@ -110,231 +113,109 @@
             -webkit-text-fill-color: transparent;
         }
 
-        .roadmap-timeline {
-            display: flex;
-            gap: 20px;
-            width: 100%;
-            flex: 1;
-            align-items: stretch;
-            margin-bottom: 10px;
-            position: relative;
-        }
-
-        /* Connecting horizontal vector timeline path line */
-        .roadmap-timeline::before {
-            content: '';
-            position: absolute;
-            top: 40px;
-            left: 10%;
-            width: 80%;
-            height: 2px;
-            background: linear-gradient(90deg, rgba(168, 85, 247, 0.1) 0%, rgba(168, 85, 247, 0.5) 30%, rgba(244, 114, 182, 0.5) 70%, rgba(244, 114, 182, 0.1) 100%);
-            z-index: 1;
-        }
-
-        .roadmap-card {
-            flex: 1;
-            background: rgba(20, 10, 32, 0.95);
-            border: 1px solid rgba(168, 85, 247, 0.15);
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            text-align: left;
-            position: relative;
-            z-index: 2;
-            transition: all 0.3s ease;
-        }
-
-        .roadmap-card:hover {
-            border-color: rgba(168, 85, 247, 0.3);
-            background: rgba(28, 14, 44, 0.98);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            transform: translateY(-3px);
-        }
-
-        .roadmap-card.active-phase {
-            border-color: rgba(244, 114, 182, 0.25);
-            background: rgba(25, 12, 38, 0.95);
-        }
-
-        .roadmap-card.active-phase:hover {
-            border-color: rgba(244, 114, 182, 0.4);
-            background: rgba(32, 14, 48, 0.98);
-        }
-
-        .phase-badge-pill {
-            align-self: flex-start;
-            padding: 4px 12px;
-            font-size: 10.5px;
-            font-weight: 700;
-            color: #d8b4fe;
-            background: rgba(168, 85, 247, 0.15);
-            border: 1px solid rgba(168, 85, 247, 0.3);
-            border-radius: 20px;
-            letter-spacing: 0.5px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .active-phase .phase-badge-pill {
-            color: #f472b6;
-            background: rgba(244, 114, 182, 0.15);
-            border-color: rgba(244, 114, 182, 0.3);
-        }
-
-        .roadmap-card h3 {
-            font-size: 18px;
-            font-weight: 700;
+        /* Subtitle */
+        .subtitle {
+            font-size: 26px;
             color: #ffffff;
-            font-family: 'Outfit', sans-serif;
-            letter-spacing: -0.2px;
-        }
-
-        .phase-focus {
-            font-size: 13px;
-            font-weight: 600;
-            color: #cbd5e1;
-            line-height: 1.35;
-        }
-
-        .card-divider {
-            height: 1px;
-            background: linear-gradient(90deg, rgba(168, 85, 247, 0.2) 0%, transparent 100%);
-            margin: 2px 0;
-        }
-
-        .active-phase .card-divider {
-            background: linear-gradient(90deg, rgba(244, 114, 182, 0.2) 0%, transparent 100%);
-        }
-
-        .tactic-checklist {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            margin-top: 2px;
-        }
-
-        .tactic-checklist li {
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            margin-bottom: 6px;
-        }
-
-        .tactic-checklist i {
-            font-size: 13px;
-            margin-top: 3px;
-            flex-shrink: 0;
-        }
-
-        .tactic-info {
-            display: flex;
-            flex-direction: column;
-            gap: 1px;
-            text-align: left;
-        }
-
-        .tactic-label {
-            font-weight: 600;
-            color: #ffffff;
-            font-size: 13.5px;
-            line-height: 1.3;
-            font-family: 'Outfit', sans-serif;
-        }
-
-        .tactic-detail {
-            color: #cbd5e1;
-            font-size: 12px;
-            line-height: 1.35;
+            margin-bottom: 45px;
+            line-height: 1.4;
             font-weight: 300;
         }
-        
-        .roadmap-card:nth-child(1) i { color: #c084fc; }
-        .roadmap-card:nth-child(2) i { color: #f472b6; }
-        .roadmap-card:nth-child(3) i { color: #60a5fa; }
 
-        .footer-roadmap-summary {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            background: rgba(168, 85, 247, 0.04);
-            border: 1px solid rgba(168, 85, 247, 0.15);
-            padding: 10px;
-            font-size: 13px;
-            color: #cbd5e1;
-            width: 100%;
-            box-sizing: border-box;
-        }
-
-        .footer-roadmap-summary i {
+        .highlight {
             color: #f472b6;
-        }
-
-        /* Slide Transitions */
-        .slide-in-right { transform: translateX(50px); opacity: 0; }
-        .slide-in-left { transform: translateX(-50px); opacity: 0; }
-        .slide-in-fade { transform: translateY(20px); opacity: 0; }
-        .exit-to-left { transform: translateX(-50px); opacity: 0; transition: all 0.35s ease; }
-        .exit-to-right { transform: translateX(50px); opacity: 0; transition: all 0.35s ease; }
-
-        /* Slide Navigation Overlay Base */
-        .slide-nav-overlay {
-            position: absolute;
-            bottom: 25px;
-            right: 25px;
-            z-index: 100;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            background: rgba(25, 15, 37, 0.65);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(168, 85, 247, 0.25);
-            padding: 8px 16px;
-            border-radius: 30px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
-            transition: all 0.3s ease;
-            user-select: none;
-        }
-        .slide-nav-overlay:hover {
-            border-color: rgba(168, 85, 247, 0.5);
-            box-shadow: 0 8px 32px rgba(168, 85, 247, 0.2);
-        }
-        .slide-nav-btn {
-            background: none;
-            border: none;
-            color: #d8b4fe;
-            font-size: 14px;
-            cursor: pointer;
-            width: 32px;
-            height: 32px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            transition: all 0.2s ease;
-        }
-        .slide-nav-btn:hover:not(:disabled) {
-            background: rgba(168, 85, 247, 0.15);
-            color: #ffffff;
-            transform: scale(1.1);
-        }
-        .slide-nav-btn:disabled {
-            opacity: 0.3;
-            cursor: not-allowed;
-        }
-        .slide-nav-info {
-            color: #cbd5e1;
-            font-size: 13px;
             font-weight: 600;
-            letter-spacing: 1px;
-            font-family: 'Outfit', sans-serif;
-            min-width: 50px;
-            text-align: center;
+        }
+
+        /* Date badge */
+        .date-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(244, 114, 182, 0.1);
+            border: 1px solid rgba(244, 114, 182, 0.25);
+            padding: 14px 32px;
+            border-radius: 0;
+            color: #fbcfe8;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .date-badge:hover {
+            background: rgba(244, 114, 182, 0.2);
+            border-color: rgba(244, 114, 182, 0.4);
+        }
+
+        /* Corner accents */
+        .corner-accent {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            border: 2px solid rgba(168, 85, 247, 0.2);
+        }
+
+        .top-left {
+            top: 30px;
+            left: 30px;
+            border-right: none;
+            border-bottom: none;
+        }
+
+        .top-right {
+            top: 30px;
+            right: 30px;
+            border-left: none;
+            border-bottom: none;
+        }
+
+        .bottom-left {
+            bottom: 30px;
+            left: 30px;
+            border-right: none;
+            border-top: none;
+        }
+
+        .bottom-right {
+            bottom: 30px;
+            right: 30px;
+            border-left: none;
+            border-top: none;
+        }
+        
+
+
+        /* Hide premium navigation chevrons for clean fullscreen presentation */
+        .slide-nav-overlay {
+            display: none !important;
+        }
+
+        /* High-fidelity premium page slide transitions */
+        .content-wrapper {
+            opacity: 0;
+            transform: translate3d(0, 0, 0);
+            transition: opacity 0.35s cubic-bezier(0.25, 1, 0.5, 1), transform 0.35s cubic-bezier(0.25, 1, 0.5, 1) !important;
+        }
+        .content-wrapper.slide-in-right {
+            transform: translate3d(50px, 0, 0);
+        }
+        .content-wrapper.slide-in-left {
+            transform: translate3d(-50px, 0, 0);
+        }
+        .content-wrapper.slide-in-fade {
+            transform: translate3d(0, 0, 0);
+        }
+        .content-wrapper.visible {
+            opacity: 1;
+            transform: translate3d(0, 0, 0) !important;
+        }
+        .content-wrapper.exit-to-left {
+            opacity: 0 !important;
+            transform: translate3d(-50px, 0, 0) !important;
+        }
+        .content-wrapper.exit-to-right {
+            opacity: 0 !important;
+            transform: translate3d(50px, 0, 0) !important;
         }
 
         /* Perfect 1080p Landscape Print Resolution */
@@ -669,120 +550,37 @@
 
 
 
+<!-- Corner accents -->
 <div class="corner-accent top-left"></div>
 <div class="corner-accent top-right"></div>
 <div class="corner-accent bottom-left"></div>
 <div class="corner-accent bottom-right"></div>
+<!-- Main content -->
 <div class="content-wrapper">
-<div class="header">
-<div class="page-badge">LAUNCH, SCALE &amp; FLYWHEEL PHASES</div>
-<h2>🚀 Go-To-Market <span class="gradient-text">Roadmap (0-36M)</span></h2>
+<div class="innovation-badge">
+<i class="fa-solid fa-flask"></i>
+<span>Innovation Lab Studio | Uni Li</span>
 </div>
-<div class="roadmap-timeline">
-<!-- Column 1: Phase 1 -->
-<div class="roadmap-card active-phase">
-<span class="phase-badge-pill"><i class="fa-solid fa-rocket"></i> PHASE 1 (0-6 M)</span>
-<h3>Launch &amp; Product-Market Fit</h3>
-<div class="phase-focus">Targeting early adopters and time-poor Gen-Z / student cohorts to establish our foundational user loops.</div>
-<div class="card-divider"></div>
-<ul class="tactic-checklist">
-<li>
-<i class="fa-solid fa-bullseye"></i>
-<div class="tactic-info">
-<span class="tactic-label">Day-One Value</span>
-<span class="tactic-detail">Launch 3 high-utility 'Hero Agents' (Travel, Finance, Food).</span>
-</div>
-</li>
-<li>
-<i class="fa-solid fa-users"></i>
-<div class="tactic-info">
-<span class="tactic-label">Organic Growth</span>
-<span class="tactic-detail">TikTok demonstrations, campus ambassador referrals.</span>
-</div>
-</li>
-<li>
-<i class="fa-solid fa-circle-dollar-to-slot"></i>
-<div class="tactic-info">
-<span class="tactic-label">Freemium Model</span>
-<span class="tactic-detail">Free core features, €5/mo compute tier.</span>
-</div>
-</li>
-</ul>
-</div>
-<!-- Column 2: Phase 2 -->
-<div class="roadmap-card">
-<span class="phase-badge-pill"><i class="fa-solid fa-gears"></i> PHASE 2 (6-18 M)</span>
-<h3>Scale &amp; Developer Ecosystem</h3>
-<div class="phase-focus">Releasing external developer tooling to transform a single storefront into a self-sustaining ecosystem.</div>
-<div class="card-divider"></div>
-<ul class="tactic-checklist">
-<li>
-<i class="fa-solid fa-code"></i>
-<div class="tactic-info">
-<span class="tactic-label">Developer SDK</span>
-<span class="tactic-detail">Release secure tunneling and containment APIs to builders.</span>
-</div>
-</li>
-<li>
-<i class="fa-solid fa-cart-shopping"></i>
-<div class="tactic-info">
-<span class="tactic-label">Marketplace Launch</span>
-<span class="tactic-detail">Open agent catalog sales with 15% platform take-rate.</span>
-</div>
-</li>
-<li>
-<i class="fa-solid fa-industry"></i>
-<div class="tactic-info">
-<span class="tactic-label">SME Pilots</span>
-<span class="tactic-detail">Launch B2B operational sandboxes for tech-forward offices.</span>
-</div>
-</li>
-</ul>
-</div>
-<!-- Column 3: Phase 3 -->
-<div class="roadmap-card">
-<span class="phase-badge-pill"><i class="fa-solid fa-circle-nodes"></i> PHASE 3 (18-36 M)</span>
-<h3>Enterprise SaaS &amp; Flywheel</h3>
-<div class="phase-focus">Expanding operational scale through advanced custom swarms, compliance, and custom workspace panels.</div>
-<div class="card-divider"></div>
-<ul class="tactic-checklist">
-<li>
-<i class="fa-solid fa-cubes"></i>
-<div class="tactic-info">
-<span class="tactic-label">Visual Swarm Builder</span>
-<span class="tactic-detail">Drag-and-drop tool to orchestrate multi-agent runs.</span>
-</div>
-</li>
-<li>
-<i class="fa-solid fa-arrow-trend-up"></i>
-<div class="tactic-info">
-<span class="tactic-label">Organic Discovery</span>
-<span class="tactic-detail">Semantic recommenders match agents with users.</span>
-</div>
-</li>
-<li>
-<i class="fa-solid fa-building-columns"></i>
-<div class="tactic-info">
-<span class="tactic-label">Enterprise Dashboard</span>
-<span class="tactic-detail">Central consoles, SSO, custom audit trails.</span>
-</div>
-</li>
-</ul>
-</div>
-</div>
-<div class="footer-roadmap-summary">
-<i class="fa-solid fa-circle-radiation"></i>
-<span>Our ultimate horizon: <strong>Unlocking a self-sustaining agent flywheel that makes autonomous internet action accessible to everyone.</strong></span>
+<div class="decorative-line"></div>
+<h1>The AI <span class="gradient-text">Store 🛒</span></h1>
+<p class="subtitle">
+                Bridging the gap to <span class="highlight">Autonomous Utility.</span><br/>
+                Zero-setup execution for everyone.
+            </p>
+<div class="date-badge">
+<i class="fa-regular fa-calendar"></i>
+<span>MARCH 2026</span>
 </div>
 </div>
 </div>
+<!-- Premium Interactive Navigation Overlay -->
 <script>
         const init = () => {
             const TOTAL_SLIDES = 10;
             const currentPath = window.location.pathname;
             const match = currentPath.match(/slide(\d+)\.html/);
             
-            let currentSlide = 8;
+            let currentSlide = 1;
             if (match) {
                 currentSlide = parseInt(match[1]);
             }

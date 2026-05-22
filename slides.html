@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The AI Store - Complete Presentation Slide Deck</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <style>
     :root {
@@ -20,11 +23,13 @@
       --card-bg: rgba(20, 10, 32, 0.85);
       --card-border: rgba(168, 85, 247, 0.25);
     }
+
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
+
     body {
       background: var(--black) !important;
       color: var(--white) !important;
@@ -36,29 +41,45 @@
       justify-content: center !important;
       align-items: center !important;
     }
-    
+
     /* Cinematic Background Noise */
     body::before {
       content: '' !important;
-      position: fixed !important; inset: 0 !important;
+      position: fixed !important;
+      inset: 0 !important;
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E") !important;
-      opacity: 0.022 !important; pointer-events: none !important; z-index: 1000 !important;
+      opacity: 0.022 !important;
+      pointer-events: none !important;
+      z-index: 1000 !important;
     }
-    
+
     /* Top-level Ambient Glows and Orb */
     .hero-glow-purple {
-      position: absolute !important; bottom: -100px !important; right: -5% !important;
-      width: 60vw !important; height: 60vw !important; border-radius: 50% !important;
-      background: radial-gradient(circle, rgba(147,51,234,0.18) 0%, transparent 65%) !important;
-      filter: blur(50px) !important; pointer-events: none !important;
+      position: absolute !important;
+      bottom: -100px !important;
+      right: -5% !important;
+      width: 60vw !important;
+      height: 60vw !important;
+      border-radius: 50% !important;
+      background: radial-gradient(circle, rgba(147, 51, 234, 0.18) 0%, transparent 65%) !important;
+      filter: blur(50px) !important;
+      pointer-events: none !important;
       animation: glow-pulse 6s ease-in-out infinite alternate !important;
       z-index: 2 !important;
     }
+
     @keyframes glow-pulse {
-      from { opacity: 0.8; transform: scale(0.95); }
-      to   { opacity: 1.0; transform: scale(1.05); }
+      from {
+        opacity: 0.8;
+        transform: scale(0.95);
+      }
+
+      to {
+        opacity: 1.0;
+        transform: scale(1.05);
+      }
     }
-    
+
     .orb {
       position: absolute !important;
       border-radius: 50% !important;
@@ -69,17 +90,36 @@
       z-index: 2 !important;
       pointer-events: none !important;
     }
+
     .orb::after {
       content: '' !important;
-      position: absolute !important; inset: 5px !important;
+      position: absolute !important;
+      inset: 5px !important;
       border-radius: 50% !important;
-      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.6), rgba(0,0,0,0.3)) !important;
+      background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.6), rgba(0, 0, 0, 0.3)) !important;
     }
-    .orb-tr { top: 8% !important; right: 5% !important; width: 145px; height: 145px; }
+
+    .orb-tr {
+      top: 8% !important;
+      right: 5% !important;
+      width: 145px;
+      height: 145px;
+    }
+
     @keyframes float {
-      0%, 100% { transform: translateY(0px) rotate(0deg); }
-      33%      { transform: translateY(-18px) rotate(6deg); }
-      66%      { transform: translateY(10px) rotate(-4deg); }
+
+      0%,
+      100% {
+        transform: translateY(0px) rotate(0deg);
+      }
+
+      33% {
+        transform: translateY(-18px) rotate(6deg);
+      }
+
+      66% {
+        transform: translateY(10px) rotate(-4deg);
+      }
     }
 
     /* Presentation Deck Viewport */
@@ -118,12 +158,14 @@
       opacity: 0 !important;
       transform: scale(0.96) translate3d(-30px, 0, 0) !important;
     }
+
     .slide-wrapper.exit-right {
       opacity: 0 !important;
       transform: scale(0.96) translate3d(30px, 0, 0) !important;
     }
   </style>
 </head>
+
 <body>
   <div class="hero-glow-purple"></div>
   <div class="orb orb-tr"></div>
@@ -143,9 +185,9 @@
 
   <script>
     // 1. Mount Slides Shadow DOM roots
-    
-        const root1 = document.getElementById('slide-wrapper-1').attachShadow({mode: 'open'});
-        root1.innerHTML = `<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Outfit:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+
+    const root1 = document.getElementById('slide-wrapper-1').attachShadow({ mode: 'open' });
+    root1.innerHTML = `<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Outfit:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
 
@@ -360,7 +402,7 @@
 
         /* Perfect 1080p Landscape Print Resolution */
         @page {
-            size: 1920px 1080px;
+            size: 1280px 720px;
             margin: 0 !important;
         }
         :host {
@@ -383,7 +425,7 @@
             .slide-container {
                 width: 1280px !important;
                 height: 720px !important;
-                transform: scale(1.5) !important;
+                transform: none !important;
                 transform-origin: top left !important;
                 background: linear-gradient(135deg, #0a0515 0%, #130922 50%, #06020a 100%) !important;
                 box-shadow: none !important;
@@ -406,6 +448,8 @@
     
         }
 
+  
+  
   
   
   
@@ -703,14 +747,14 @@
             </p>
 <div class="date-badge">
 <i class="fa-regular fa-calendar"></i>
-<span>MARCH 2026</span>
+<span>MAY 2026</span>
 </div>
 </div>
 </div>`;
-        
 
-        const root2 = document.getElementById('slide-wrapper-2').attachShadow({mode: 'open'});
-        root2.innerHTML = `<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Outfit:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+
+    const root2 = document.getElementById('slide-wrapper-2').attachShadow({ mode: 'open' });
+    root2.innerHTML = `<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Outfit:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
 
@@ -991,7 +1035,7 @@
 
         /* Perfect 1080p Landscape Print Resolution */
         @page {
-            size: 1920px 1080px;
+            size: 1280px 720px;
             margin: 0 !important;
         }
         :host {
@@ -1014,7 +1058,7 @@
             .slide-container {
                 width: 1280px !important;
                 height: 720px !important;
-                transform: scale(1.5) !important;
+                transform: none !important;
                 transform-origin: top left !important;
                 background: linear-gradient(135deg, #0a0515 0%, #130922 50%, #06020a 100%) !important;
                 box-shadow: none !important;
@@ -1037,6 +1081,8 @@
     
         }
 
+  
+  
   
   
   
@@ -1424,10 +1470,10 @@
             init();
         }<\/script>
 </div>`;
-        
 
-        const root3 = document.getElementById('slide-wrapper-3').attachShadow({mode: 'open'});
-        root3.innerHTML = `<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Outfit:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+
+    const root3 = document.getElementById('slide-wrapper-3').attachShadow({ mode: 'open' });
+    root3.innerHTML = `<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Outfit:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
 
@@ -1708,7 +1754,7 @@
 
         /* Perfect 1080p Landscape Print Resolution */
         @page {
-            size: 1920px 1080px;
+            size: 1280px 720px;
             margin: 0 !important;
         }
         :host {
@@ -1731,7 +1777,7 @@
             .slide-container {
                 width: 1280px !important;
                 height: 720px !important;
-                transform: scale(1.5) !important;
+                transform: none !important;
                 transform-origin: top left !important;
                 background: linear-gradient(135deg, #0a0515 0%, #130922 50%, #06020a 100%) !important;
                 box-shadow: none !important;
@@ -1754,6 +1800,8 @@
     
         }
 
+  
+  
   
   
   
@@ -2052,8 +2100,8 @@
 <div class="feature-text"><div class="feature-title">Terminal Interfaces</div> Intimidating text terminals hostile to 99% of everyday internet users.</div>
 </li>
 <li class="feature-item">
-<span class="feature-bullet">📖</span>
-<div class="feature-text"><div class="feature-title">Frustrating UX</div> Configuration relies on fragile and outdated developer documentation.</div>
+<span class="feature-bullet">🧠</span>
+<div class="feature-text"><div class="feature-title">Monolithic Bloat</div> Generalist bots stuffed with fragile "skills" suffer from context overload and high tool failure rates.</div>
 </li>
 </ul>
 <div class="result-box wall-result">
@@ -2076,8 +2124,8 @@
 <div class="feature-text"><div class="feature-title">Zero-Setup Cloud</div> Web automation and LLMs run securely in ephemeral cloud sandboxes.</div>
 </li>
 <li class="feature-item">
-<span class="feature-bullet">🖱️</span>
-<div class="feature-text"><div class="feature-title">Intuitive Dashboards</div> Familiar control panels and step checklists guide the user experience.</div>
+<span class="feature-bullet">🤝</span>
+<div class="feature-text"><div class="feature-title">Specialized Swarms</div> A central orchestrator "hires" niche, domain-expert agents that communicate and cooperate autonomously.</div>
 </li>
 </ul>
 <div class="result-box bridge-result">
@@ -2088,10 +2136,10 @@
 </div>
 </div>
 </div>`;
-        
 
-        const root4 = document.getElementById('slide-wrapper-4').attachShadow({mode: 'open'});
-        root4.innerHTML = `<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Outfit:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+
+    const root4 = document.getElementById('slide-wrapper-4').attachShadow({ mode: 'open' });
+    root4.innerHTML = `<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Outfit:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
 
@@ -2396,7 +2444,7 @@
 
         /* Perfect 1080p Landscape Print Resolution */
         @page {
-            size: 1920px 1080px;
+            size: 1280px 720px;
             margin: 0 !important;
         }
         :host {
@@ -2419,7 +2467,7 @@
             .slide-container {
                 width: 1280px !important;
                 height: 720px !important;
-                transform: scale(1.5) !important;
+                transform: none !important;
                 transform-origin: top left !important;
                 background: linear-gradient(135deg, #0a0515 0%, #130922 50%, #06020a 100%) !important;
                 box-shadow: none !important;
@@ -2442,6 +2490,8 @@
     
         }
 
+  
+  
   
   
   
@@ -2767,10 +2817,10 @@
 </div>
 </div>
 </div>`;
-        
 
-        const root5 = document.getElementById('slide-wrapper-5').attachShadow({mode: 'open'});
-        root5.innerHTML = `<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Outfit:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+
+    const root5 = document.getElementById('slide-wrapper-5').attachShadow({ mode: 'open' });
+    root5.innerHTML = `<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Outfit:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
 
@@ -3016,7 +3066,7 @@
 
         /* Perfect 1080p Landscape Print Resolution */
         @page {
-            size: 1920px 1080px;
+            size: 1280px 720px;
             margin: 0 !important;
         }
         :host {
@@ -3039,7 +3089,7 @@
             .slide-container {
                 width: 1280px !important;
                 height: 720px !important;
-                transform: scale(1.5) !important;
+                transform: none !important;
                 transform-origin: top left !important;
                 background: linear-gradient(135deg, #0a0515 0%, #130922 50%, #06020a 100%) !important;
                 box-shadow: none !important;
@@ -3062,6 +3112,8 @@
     
         }
 
+  
+  
   
   
   
@@ -3381,10 +3433,10 @@
 </div>
 </div>
 </div>`;
-        
 
-        const root6 = document.getElementById('slide-wrapper-6').attachShadow({mode: 'open'});
-        root6.innerHTML = `<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Outfit:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+
+    const root6 = document.getElementById('slide-wrapper-6').attachShadow({ mode: 'open' });
+    root6.innerHTML = `<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Outfit:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
 
@@ -3672,7 +3724,7 @@
 
         /* Perfect 1080p Landscape Print Resolution */
         @page {
-            size: 1920px 1080px;
+            size: 1280px 720px;
             margin: 0 !important;
         }
         :host {
@@ -3695,7 +3747,7 @@
             .slide-container {
                 width: 1280px !important;
                 height: 720px !important;
-                transform: scale(1.5) !important;
+                transform: none !important;
                 transform-origin: top left !important;
                 background: linear-gradient(135deg, #0a0515 0%, #130922 50%, #06020a 100%) !important;
                 box-shadow: none !important;
@@ -3718,6 +3770,8 @@
     
         }
 
+  
+  
   
   
   
@@ -4049,10 +4103,10 @@
 </div>
 </div>
 </div>`;
-        
 
-        const root7 = document.getElementById('slide-wrapper-7').attachShadow({mode: 'open'});
-        root7.innerHTML = `<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Outfit:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+
+    const root7 = document.getElementById('slide-wrapper-7').attachShadow({ mode: 'open' });
+    root7.innerHTML = `<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Outfit:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
 
@@ -4305,7 +4359,7 @@
 
         /* Perfect 1080p Landscape Print Resolution */
         @page {
-            size: 1920px 1080px;
+            size: 1280px 720px;
             margin: 0 !important;
         }
         :host {
@@ -4328,7 +4382,7 @@
             .slide-container {
                 width: 1280px !important;
                 height: 720px !important;
-                transform: scale(1.5) !important;
+                transform: none !important;
                 transform-origin: top left !important;
                 background: linear-gradient(135deg, #0a0515 0%, #130922 50%, #06020a 100%) !important;
                 box-shadow: none !important;
@@ -4351,6 +4405,8 @@
     
         }
 
+  
+  
   
   
   
@@ -4696,10 +4752,10 @@
 </div>
 </div>
 </div>`;
-        
 
-        const root8 = document.getElementById('slide-wrapper-8').attachShadow({mode: 'open'});
-        root8.innerHTML = `<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Outfit:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+
+    const root8 = document.getElementById('slide-wrapper-8').attachShadow({ mode: 'open' });
+    root8.innerHTML = `<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Outfit:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
 
@@ -5032,7 +5088,7 @@
 
         /* Perfect 1080p Landscape Print Resolution */
         @page {
-            size: 1920px 1080px;
+            size: 1280px 720px;
             margin: 0 !important;
         }
         :host {
@@ -5055,7 +5111,7 @@
             .slide-container {
                 width: 1280px !important;
                 height: 720px !important;
-                transform: scale(1.5) !important;
+                transform: none !important;
                 transform-origin: top left !important;
                 background: linear-gradient(135deg, #0a0515 0%, #130922 50%, #06020a 100%) !important;
                 box-shadow: none !important;
@@ -5078,6 +5134,8 @@
     
         }
 
+  
+  
   
   
   
@@ -5438,10 +5496,10 @@
 </div>
 </div>
 </div>`;
-        
 
-        const root9 = document.getElementById('slide-wrapper-9').attachShadow({mode: 'open'});
-        root9.innerHTML = `<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Outfit:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+
+    const root9 = document.getElementById('slide-wrapper-9').attachShadow({ mode: 'open' });
+    root9.innerHTML = `<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Outfit:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
 
@@ -5775,7 +5833,7 @@
 
         /* Perfect 1080p Landscape Print Resolution */
         @page {
-            size: 1920px 1080px;
+            size: 1280px 720px;
             margin: 0 !important;
         }
         :host {
@@ -5798,7 +5856,7 @@
             .slide-container {
                 width: 1280px !important;
                 height: 720px !important;
-                transform: scale(1.5) !important;
+                transform: none !important;
                 transform-origin: top left !important;
                 background: linear-gradient(135deg, #0a0515 0%, #130922 50%, #06020a 100%) !important;
                 box-shadow: none !important;
@@ -5821,6 +5879,8 @@
     
         }
 
+  
+  
   
   
   
@@ -6206,10 +6266,10 @@
 </div>
 </div>
 </div>`;
-        
 
-        const root10 = document.getElementById('slide-wrapper-10').attachShadow({mode: 'open'});
-        root10.innerHTML = `<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Outfit:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+
+    const root10 = document.getElementById('slide-wrapper-10').attachShadow({ mode: 'open' });
+    root10.innerHTML = `<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Outfit:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
 
@@ -6484,7 +6544,7 @@
 
         /* Perfect 1080p Landscape Print Resolution */
         @page {
-            size: 1920px 1080px;
+            size: 1280px 720px;
             margin: 0 !important;
         }
         :host {
@@ -6507,7 +6567,7 @@
             .slide-container {
                 width: 1280px !important;
                 height: 720px !important;
-                transform: scale(1.5) !important;
+                transform: none !important;
                 transform-origin: top left !important;
                 background: linear-gradient(135deg, #0a0515 0%, #130922 50%, #06020a 100%) !important;
                 box-shadow: none !important;
@@ -6537,6 +6597,8 @@
         
         }
 
+  
+  
   
   
   
@@ -6857,19 +6919,15 @@
 </div>
 <div class="cta-card">
 <div>
-<div class="cta-card-title"><i class="fa-solid fa-address-book"></i> Contact &amp; Links</div>
+<div class="cta-card-title"><i class="fa-solid fa-address-book"></i> Links &amp; Demo</div>
 <div class="contact-links">
 <div class="contact-item">
-<i class="fa-solid fa-envelope"></i>
-<a href="mailto:hello@theaistore.io">hello@theaistore.io</a>
-</div>
-<div class="contact-item">
-<i class="fa-solid fa-code"></i>
-<a href="#">dev.theaistore.io</a>
-</div>
-<div class="contact-item">
 <i class="fa-solid fa-globe"></i>
-<a href="#">www.theaistore.io</a>
+<a href="https://aistoreli.surge.sh" target="_blank">aistoreli.surge.sh</a>
+</div>
+<div class="contact-item">
+<i class="fa-solid fa-laptop-code"></i>
+<a href="https://aistoreli.surge.sh/demo.html" target="_blank">aistoreli.surge.sh/demo.html</a>
 </div>
 </div>
 </div>
@@ -6877,15 +6935,15 @@
 </div>
 </div>
 </div>`;
-        
+
 
     // 2. Setup presentation slide transitions
     let currentSlide = 1;
     const totalSlides = 10;
-    
+
     function showSlide(index, direction) {
       if (index < 1 || index > totalSlides) return;
-      
+
       const prevActive = document.querySelector('.slide-wrapper.active');
       if (prevActive) {
         prevActive.classList.remove('active', 'exit-left', 'exit-right');
@@ -6894,29 +6952,29 @@
         } else if (direction === 'prev') {
           prevActive.classList.add('exit-right');
         }
-        
+
         // Pause any playing videos in the slide we are exiting (handling Shadow DOM)
         const shadow = prevActive.shadowRoot;
         if (shadow) {
           shadow.querySelectorAll('video').forEach(video => video.pause());
         }
       }
-      
+
       currentSlide = index;
       const activeSlide = document.getElementById(`slide-wrapper-${currentSlide}`);
       activeSlide.classList.remove('exit-left', 'exit-right');
       activeSlide.classList.add('active');
-      
+
       // Update browser history hash
       history.replaceState(null, null, `#slide-${currentSlide}`);
     }
-    
+
     // Keyboard keydown navigator
     document.addEventListener('keydown', e => {
       if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.isContentEditable) {
-        return; 
+        return;
       }
-      
+
       if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown' || e.key === 'Enter') {
         e.preventDefault();
         showSlide(currentSlide + 1, 'next');
@@ -6967,21 +7025,21 @@
       const baseHeight = 720;
       const winWidth = window.innerWidth;
       const winHeight = window.innerHeight;
-      
+
       const scaleX = winWidth / baseWidth;
       const scaleY = winHeight / baseHeight;
       const scale = Math.min(scaleX, scaleY);
-      
+
       const viewport = document.querySelector('.presentation-viewport');
       if (viewport) {
         viewport.style.transform = `scale(${scale})`;
       }
     };
-    
+
     window.addEventListener('resize', resizeDeck);
     window.addEventListener('DOMContentLoaded', () => {
       resizeDeck();
-      
+
       const hash = window.location.hash;
       const slideMatch = hash.match(/#slide-(\d+)/);
       if (slideMatch) {
@@ -6997,4 +7055,5 @@
     });
   </script>
 </body>
+
 </html>

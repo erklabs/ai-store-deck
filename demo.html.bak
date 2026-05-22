@@ -1928,7 +1928,6 @@
   
   
   
-  
   /* ─── REMIX STYLING INJECTION ─── */
   :root, :host {
     --black: #000000;
@@ -2658,7 +2657,7 @@
 <i class="fa-solid fa-fingerprint" style="color: var(--purple-light);"></i>
 <span>Biometric Bridge Active</span>
 </div>
-<a class="back-slides-btn" href="slides.html#slide-4">
+<a class="back-slides-btn" href="index.html">
 <i class="fa-solid fa-chevron-left"></i>
 <span>Back to Slides</span>
 </a>

@@ -89,6 +89,7 @@
   
   
   
+  
   /* ─── REMIX STYLING INJECTION ─── */
   :root, :host {
     --black: #000000;
@@ -623,6 +624,7 @@
     
         }
 
+  
   
   
   
@@ -1269,6 +1271,7 @@
   
   
   
+  
   /* ─── REMIX STYLING INJECTION ─── */
   :root, :host {
     --black: #000000;
@@ -1588,6 +1591,59 @@
                         wrapper.classList.add(dir > 0 ? 'exit-to-left' : 'exit-to-right');
                         setTimeout(() => {
                             window.location.href = nextSlide === 1 ? 'index.html' : \`slide\${nextSlide}.html\`;
+                        }, 350); // Wait for transition out
+                    } else {
+                        window.location.href = nextSlide === 1 ? 'index.html' : \`slide\${nextSlide}.html\`;
+                    }
+                }
+            };
+            
+            // Keyboard listeners
+            document.addEventListener('keydown', (e) => {
+                if (['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) {
+                    return;
+                }
+                if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'Enter') {
+                    e.preventDefault();
+                    goToSlide(1);
+                } else if (e.key === 'ArrowLeft' || e.key === 'Backspace') {
+                    e.preventDefault();
+                    goToSlide(-1);
+                } else if (e.key === 'd' || e.key === 'D') {
+                    e.preventDefault();
+                    window.open('demo.html', '_blank');
+                }
+            });
+
+            // Fullscreen dynamic scaling to fit any viewport perfectly
+            const resizeSlide = () => {
+                const container = document.querySelector('.slide-container');
+                if (!container) return;
+                const baseWidth = 1280;
+                const baseHeight = 720;
+                const winWidth = window.innerWidth;
+                const winHeight = window.innerHeight;
+                
+                const scaleX = winWidth / baseWidth;
+                const scaleY = winHeight / baseHeight;
+                const scale = Math.min(scaleX, scaleY);
+                
+                container.style.transform = \`scale(\${scale})\`;
+                container.style.transformOrigin = 'center center';
+            };
+            
+            window.addEventListener('resize', resizeSlide);
+            resizeSlide();
+            setTimeout(resizeSlide, 50);
+        };
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', init);
+        } else {
+            init();
+        }<\/script>
+</div>
+        `;
                         }, 350); // Wait for transition out
                     } else {
                         window.location.href = nextSlide === 1 ? 'index.html' : \`slide\${nextSlide}.html\`;
@@ -2970,6 +3026,7 @@
   
   
   
+  
   /* ─── REMIX STYLING INJECTION ─── */
   :root, :host {
     --black: #000000;
@@ -3658,6 +3715,7 @@
   
   
   
+  
   /* ─── REMIX STYLING INJECTION ─── */
   :root, :host {
     --black: #000000;
@@ -4263,6 +4321,7 @@
     
         }
 
+  
   
   
   
@@ -4934,6 +4993,7 @@
   
   
   
+  
   /* ─── REMIX STYLING INJECTION ─── */
   :root, :host {
     --black: #000000;
@@ -5552,6 +5612,7 @@
     
         }
 
+  
   
   
   
@@ -6279,6 +6340,7 @@
     
         }
 
+  
   
   
   
@@ -7037,6 +7099,7 @@
   
   
   
+  
   /* ─── REMIX STYLING INJECTION ─── */
   :root, :host {
     --black: #000000;
@@ -7738,6 +7801,7 @@
         
         }
 
+  
   
   
   

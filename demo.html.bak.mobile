@@ -1865,13 +1865,6 @@
             color: var(--green-neon);
         }
 
-        .table-responsive-wrapper {
-            width: 100%;
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-            margin-bottom: 20px;
-        }
-
         .audit-logs-table {
             width: 100%;
             border-collapse: collapse;
@@ -1913,9 +1906,7 @@
             .chat-layout { height: calc(100vh - 250px); }
             header { padding: 0 15px; }
             .header-logo span { font-size: 16px; }
-            .status-indicators .status-item { display: none; }
-            main { padding: 20px 15px; }
-            .audit-metrics-row { grid-template-columns: 1fr; gap: 15px; }
+            .status-indicators { display: none; }
             .mock-page-body .food-layout, .mock-page-body .bank-dashboard { grid-template-columns: 1fr; gap: 15px; }
             .travel-search-form { grid-template-columns: 1fr 1fr; gap: 10px; }
             .phone-frame { transform: scale(0.85); }
@@ -3189,50 +3180,6 @@
                 border-color: rgba(239, 68, 68, 0.35);
                 color: #ef4444;
             }
-
-            /* Security Bridge Responsiveness Classes */
-            .security-flex-container {
-                display: flex;
-                gap: 30px;
-                align-items: center;
-                margin-top: 20px;
-            }
-            .security-main-content {
-                flex: 1;
-                display: flex;
-                flex-direction: column;
-                gap: 15px;
-            }
-            .security-side-card {
-                background: rgba(168, 85, 247, 0.05);
-                border: 1px solid var(--border-glow);
-                padding: 25px;
-                border-radius: 12px;
-                width: 350px;
-                text-align: center;
-                box-sizing: border-box;
-            }
-
-            @media (max-width: 768px) {
-                .profile-layout {
-                    grid-template-columns: 1fr;
-                    gap: 20px;
-                }
-                .profile-sidebar-card {
-                    width: 100% !important;
-                }
-                .file-vault-table td, .file-vault-table th {
-                    padding: 12px 10px;
-                }
-                .security-flex-container {
-                    flex-direction: column;
-                    align-items: stretch;
-                    gap: 20px;
-                }
-                .security-side-card {
-                    width: 100%;
-                }
-            }
             </style>
 </head>
 <body>
@@ -3607,7 +3554,6 @@
 <div class="audit-metric-val">VERIFIED</div>
 </div>
 </div>
-<div class="table-responsive-wrapper">
 <table class="audit-logs-table">
 <thead>
 <tr>
@@ -3628,7 +3574,6 @@
 </table>
 </div>
 </div>
-</div>
 <!-- 5. BIOMETRIC BRIDGE SETTINGS PAGE -->
 <div class="page-content" id="page-security" style="display: none;">
 <div class="page-header">
@@ -3640,8 +3585,8 @@
 <h2>Client Consent Cryptography</h2>
 <span class="sandbox-badge">Bridge Enforced</span>
 </div>
-<div class="security-flex-container">
-<div class="security-main-content">
+<div style="display: flex; gap: 30px; align-items: center; margin-top: 20px;">
+<div style="flex: 1; display: flex; flex-direction: column; gap: 15px;">
 <h3 style="color: white; font-family: 'Outfit', sans-serif;">Human-in-the-Loop Consent Protocol</h3>
 <p style="font-size: 14px; color: var(--text-muted); line-height: 1.6;">
                                 The AI Store separates <strong>Computation (Cloud sandbox)</strong> from <strong>Authority (Local device vault)</strong>. When an autonomous swarm agent attempts a high-risk web action (checkout transaction, password input, vendor deletion):
@@ -3653,7 +3598,7 @@
 <li>Upon verification, a unique cryptographic signature is compiled locally and sent to release the sandbox thread.</li>
 </ol>
 </div>
-<div class="security-side-card">
+<div style="background: rgba(168, 85, 247, 0.05); border: 1px solid var(--border-glow); padding: 25px; border-radius: 12px; width: 350px; text-align: center;">
 <i class="fa-solid fa-fingerprint" style="font-size: 55px; color: var(--purple-light); margin-bottom: 15px; display: block;"></i>
 <h4 style="color: white; margin-bottom: 5px;">Bridge Encryption Channel</h4>
 <p style="font-size: 12px; color: var(--text-muted); line-height: 1.4; margin-bottom: 15px;">ECDSA-SHA256 authenticated cryptographic tunnel links localized credentials directly to execution virtual sandboxes.</p>
@@ -3758,7 +3703,6 @@
                 </div>
 
                 <!-- Live File Table -->
-                <div class="table-responsive-wrapper">
                 <table class="file-vault-table">
                     <thead>
                         <tr>
@@ -3898,7 +3842,6 @@
                         </tr>
                     </tbody>
                 </table>
-                </div>
             </div>
 
             <!-- Section 2: Connected Social Accounts & Websites -->
@@ -3907,7 +3850,7 @@
                     <i class="fa-solid fa-network-wired"></i>
                     <span>Connected Social Networks &amp; Websites</span>
                 </h2>
-                <p class="card-subtitle">Authorize Hero Agent swarms to read profile context, social feeds, and pull secure API information from external accounts.</p>
+                <p class="card-subtitle">Authorise Hero Agent swarms to read profile context, social feeds, and pull secure API information from external accounts.</p>
 
                 <div class="services-grid">
                     <!-- Service 1: GitHub -->
